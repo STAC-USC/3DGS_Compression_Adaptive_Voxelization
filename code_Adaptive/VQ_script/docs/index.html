@@ -1,0 +1,712 @@
+<!<!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <title>Compressed 3D Gaussian Splatting for Accelerated Novel View Synthesis</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="static/css/academicons.min.css">
+        <link rel="stylesheet" href="static/css/fontawesome.min.css">
+        <script src="static/js/all.min.js"></script>
+        <script src="static/js/bulma-carousel.min.js"></script>
+
+
+        <link rel="stylesheet" href="static/css/style.css">
+        <script src="static/js/script.js"></script>
+    </head>
+
+    <body>
+        <nav class="navbar" role="navigation" aria-label="main navigation">
+            <div class="navbar-brand">
+                <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                </a>
+            </div>
+            <div class="navbar-menu">
+                <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+                    <a class="navbar-item" href="https://www.cs.cit.tum.de/cg/people/niedermayr/">
+                        <span class="icon">
+                            <i class="fas fa-home"></i>
+                        </span>
+                    </a>
+
+                    <div class="navbar-item has-dropdown is-hoverable">
+                        <a class="navbar-link">
+                            More Research
+                        </a>
+                        <div class="navbar-dropdown">
+                            <a class="navbar-item" href="https://www.cs.cit.tum.de/cg/research/publications/">
+                                TUM Computer Graphics and Visualization
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </nav>
+
+
+        <section class="hero">
+            <div class="hero-body">
+                <div class="container is-max-desktop">
+                    <div class="columns is-centered">
+                        <div class="column has-text-centered">
+                            <h1 class="title is-1 is-size-3-mobile publication-title">Compressed 3D Gaussian Splatting
+                                for Accelerated
+                                Novel View Synthesis</h1>
+                            <h2 class="subtitle is-4 opacity-1" style="margin-top: 1rem;opacity:0.7">CVPR 2024</h2>
+                            <div class="is-size-5 publication-authors">
+                                <span class="author-block">
+                                    <a href="https://www.cs.cit.tum.de/en/cg/people/niedermayr/">Simon
+                                        Niedermayr</a>,</span>
+                                <span class="author-block">
+                                    <a href="https://www.cs.cit.tum.de/en/cg/people/alumni/stumpfegger/"> Josef
+                                        Stumpfegger</a>,</span>
+                                <span class="author-block">
+                                    <a href="https://www.cs.cit.tum.de/en/cg/people/westermann/">Rüdiger
+                                        Westermann</a>
+                                </span>
+                            </div>
+
+                            <div class="is-size-5 publication-authors">
+                                <span class="author-block">Technical University of Munich</span>
+                            </div>
+
+                            <div class="column has-text-centered">
+                                <div class="publication-links">
+                                    <!-- PDF Link. -->
+                                    <span class="link-block">
+                                        <a href="https://openaccess.thecvf.com/content/CVPR2024/papers/Niedermayr_Compressed_3D_Gaussian_Splatting_for_Accelerated_Novel_View_Synthesis_CVPR_2024_paper.pdf"
+                                            class="external-link button is-normal is-rounded is-dark">
+                                            <span class="icon">
+                                                <i class="fas fa-file-pdf"></i>
+                                            </span>
+                                            <span>Paper</span>
+                                        </a>
+                                    </span>
+                                    <span class="link-block">
+                                        <a href="https://arxiv.org/abs/2401.02436"
+                                            class="external-link button is-normal is-rounded is-dark">
+                                            <span class="icon">
+                                                <i class="ai ai-arxiv"></i>
+                                            </span>
+                                            <span>arXiv</span>
+                                        </a>
+                                    </span>
+                                    <span class="link-block">
+                                        <a href="https://github.com/KeKsBoTer/c3dgs"
+                                            class="external-link button is-normal is-rounded is-dark">
+                                            <span class="icon">
+                                                <i class="fab fa-github"></i>
+                                            </span>
+                                            <span>Code</span>
+                                        </a>
+                                    </span>
+                                    <!-- Dataset Link. -->
+                                    <span class="link-block">
+                                        <a href="https://github.com/KeKsBoTer/web-splat/releases/download/v1.0.0/scenes.zip"
+                                            class="external-link button is-normal is-rounded is-dark">
+                                            <span class="icon">
+                                                <i class="far fa-images"></i>
+                                            </span>
+                                            <span>Compressed Scenes</span>
+                                        </a>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="hero teaser is-light">
+            <div class="hero-body">
+                <div class="container">
+                    <div id="results-carousel" class="carousel results-carousel">
+                        <div class="item item-bonsai">
+                            <video poster="" id="bonsai" autoplay controls muted loop playsinline height="100%">
+                                <source src="./static/videos/bonsai.mp4" type="video/mp4">
+                            </video>
+
+                        </div>
+                        <div class="item item-bicycle">
+                            <video poster="" id="bicycle" autoplay controls muted loop playsinline height="100%">
+                                <source src="./static/videos/bicycle.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                        <div class="item item-garden">
+                            <video poster="" id="garden" autoplay controls muted loop playsinline height="100%">
+                                <source src="./static/videos/garden.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                        <div class="item item-truck">
+                            <video poster="" id="truck" autoplay controls muted loop playsinline height="100%">
+                                <source src="./static/videos/truck.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                        <div class="item item-playroom">
+                            <video poster="" id="playroom" autoplay controls muted loop playsinline height="100%">
+                                <source src="./static/videos/playroom.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+                    <div style="height: 1rem;"></div>
+                    <h2 class="subtitle has-text-centered is-size-6-mobile">
+                        Compressing 3D Gaussian Splats up to 31x (26x avg.) for reduced storage requirements and
+                        accelerated novel view synthesis.
+                    </h2>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container is-max-desktop is-mobile">
+                <!-- Abstract. -->
+                <div class="columns is-centered">
+                    <div class="column is-four-fifths">
+                        <h2 class="title is-3">Abstract</h2>
+                        <div class="content has-text-justified">
+                            Recently, high-fidelity scene reconstruction with an optimized 3D Gaussian splat
+                            representation has been introduced for novel view synthesis from sparse image sets.
+                            Making such representations suitable for applications like network streaming and rendering
+                            on low-power devices requires significantly reduced memory consumption as well as improved
+                            rendering efficiency.<br>
+                            We propose a compressed 3D Gaussian splat representation that utilizes sensitivity-aware
+                            vector clustering with quantization-aware training to compress directional colors and
+                            Gaussian parameters. The learned codebooks have low bitrates and achieve a
+                            <strong>compression rate
+                                of up to 31x</strong> on real-world scenes with only minimal degradation of visual
+                            quality.
+                            We demonstrate that the compressed splat representation can be efficiently rendered with
+                            hardware rasterization on lightweight GPUs at up to <strong>4x higher framerates</strong>
+                            than reported via
+                            an optimized GPU compute pipeline.
+                            Extensive experiments across multiple datasets demonstrate the robustness and rendering
+                            speed of the proposed approach.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container is-max-desktop is-mobile">
+                <div class="is-centered" style="margin-bottom: 3rem;">
+                    <h2 class="title is-3">Compression Method</h2>
+                </div>
+                <p>
+                    We address the storage and rendering issue of 3D Gaussian Splatting (3DGS) by compressing the
+                    reconstructed scene parameters and rendering the compressed representation via GPU rasterization.
+                    To compress the scenes, we first analyze its components and observe that the Spherical Harmonics
+                    (SH) coefficients and the multivariate Gaussian parameters take up the majority of storage space and
+                    are highly redundant.
+                    Our compression pipeline consists of three steps:
+                </p>
+                <ul>
+                    <li style="padding: 0.5rem;"> <strong>Sensitivity-aware clustering:</strong> We derive a sensitivity
+                        measure for each scene parameter by calculating its contribution to the training images. Color
+                        information and Gaussian parameters are encoded into compact codebooks via sensitivity-aware
+                        vector quantization. </li>
+                    <li style="padding: 0.5rem;"> <strong>Quantization-aware fine-tuning:</strong> To regain information
+                        that is lost during clustering we fine-tune the scene parameters at reduced bit-rates using
+                        quantization-aware training.</li>
+                    <li style="padding: 0.5rem;"> <strong>Entropy encoding:</strong> 3D Gaussians are linearized along a
+                        space-filling curve to exploit the spatial coherence of scene parameters with entropy and
+                        run-length encoding.</li>
+                </ul>
+                <br>
+                <div class="is-centered ">
+                    <img src="static/img/pipeline.svg">
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container is-max-desktop is-mobile">
+                <div class="is-centered" style="margin-bottom: 3rem;">
+                    <h2 class="title is-3">Rendering</h2>
+                </div>
+                <p>
+                    Gaussians are rendered in sorted order via GPU rasterization. For each Gaussian, one planar
+                    quad (a so-called splat) consisting of two triangles is rendered. A vertex shader computes the
+                    screen space vertex
+                    positions of each splat from the 2D covariance information.
+                    The size of a splat is set such that it covers the 99% confidence interval of the projected
+                    Gaussian. The vertex shader
+                    simply outputs the color computed in the pre-pass and the
+                    2D splat center as input to the pixel shader. The pixel shader
+                    then discards fragments outside the 99% confidence interval. All remaining fragments use their
+                    distance to the splat
+                    center to compute the exponential color and opacity falloff
+                    and blend their final colors into the framebuffer.
+                </p>
+                <p>The renderer is implemented with the WebGPU graphics
+                    API in the Rust programming language. Thus, it can run in
+                    a modern web browser on a large variety of devices. A demo can be found below.</p>
+                <p>The source code for our renderer can be found <a
+                        href="https://github.com/KeKsBoTer/web-splat">here</a>.</p>
+            </div>
+        </section>
+
+
+        <section class="section">
+            <div class="container is-max-desktop is-mobile">
+                <div class="is-centered" style="margin-bottom: 3rem;">
+                    <h2 class="title is-3">Results</h2>
+                </div>
+                <p>
+                    We evaluate our method on 13 real scenes and the NeRF Synthesis dataset. Our method achieves a 26x
+                    compression rate on average on real scenes at minimal loss in visual quality.
+                    Our rasterization based renderer achieves a 3.5x speedup for the compressed scenes compared to the
+                    compute shader based renderer of Kerbl et al.
+                    The FPS measures shown below were obtained on the bicycle scene from Mip-NeRF360 on an NVIDIA
+                    GeForce A5000.
+                </p>
+                <div class="columns is-centered has-text-centered is-multiline">
+                    <div class="column">
+                        <img src="static/img/plot_summary.svg" />
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section class="section">
+            <div class="container is-max-desktop is-mobile">
+                <div class="is-centered" style="margin-bottom: 3rem;">
+                    <h2 class="title is-3">Interactive Web Demo</h2>
+                </div>
+                <div class="columns is-centered has-text-centered is-multiline" id="demos">
+                    <div class="column demo-card">
+                        <div class="card">
+                            <a target="_blank"
+                                href="https://keksboter.github.io/web-splat/?file=./scenes/bicycle/point_cloud/iteration_35000/point_cloud.npz&scene=./scenes/bicycle/cameras.json">
+                                <div class="card-image">
+                                    <figure class="image">
+                                        <img src="static/img/samples/bicycle/ours/00000.png" alt="Placeholder image">
+                                    </figure>
+                                </div>
+                                <div class="card-content has-text-left">
+                                    <div class="media">
+                                        <div class="media-left">
+                                            <div class="title is-4">Bicycle</div>
+                                            <div class="subtitle is-6">Mip-NeRF360</div>
+                                        </div>
+                                        <div class="media-center" style="width: 100%;">
+                                        </div>
+                                        <div class="media-right">
+                                            <span class="tag">
+                                                47 MB
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="column demo-card">
+                        <div class="card">
+                            <a target="_blank"
+                                href="https://keksboter.github.io/web-splat/?file=./scenes/garden/point_cloud/iteration_35000/point_cloud.npz&scene=./scenes/garden/cameras.json">
+                                <div class="card-image">
+                                    <figure class="image">
+                                        <img src="static/img/samples/garden/ours/00000.png" alt="Placeholder image">
+                                    </figure>
+                                </div>
+                                <div class="card-content has-text-left">
+                                    <div class="media">
+                                        <div class="media-left">
+                                            <div class="title is-4">Garden</div>
+                                            <div class="subtitle is-6">Mip-NeRF360</div>
+                                        </div>
+                                        <div class="media-center" style="width: 100%;">
+                                        </div>
+                                        <div class="media-right">
+                                            <span class="tag">
+                                                47 MB
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="column demo-card">
+                        <div class="card">
+                            <a target="_blank"
+                                href="https://keksboter.github.io/web-splat/?file=./scenes/truck/point_cloud/iteration_35000/point_cloud.npz&scene=./scenes/truck/cameras.json">
+                                <div class="card-image">
+                                    <figure class="image">
+                                        <img src="static/img/samples/truck/ours/00000.png" alt="Placeholder image">
+                                    </figure>
+                                </div>
+                                <div class="card-content has-text-left">
+                                    <div class="media">
+                                        <div class="media-left">
+                                            <div class="title is-4">Truck</div>
+                                            <div class="subtitle is-6">Tanks &amp; Temples</div>
+                                        </div>
+                                        <div class="media-center" style="width: 100%;">
+                                        </div>
+                                        <div class="media-right">
+                                            <span class="tag">
+                                                21 MB
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="column demo-card">
+                        <div class="card">
+                            <a target="_blank"
+                                href="https://keksboter.github.io/web-splat/?file=./scenes/playroom/point_cloud/iteration_35000/point_cloud.npz&scene=./scenes/playroom/cameras.json">
+                                <div class="card-image">
+                                    <figure class="image">
+                                        <img src="static/img/samples/playroom/ours/00000.png" alt="Placeholder image">
+                                    </figure>
+                                </div>
+                                <div class="card-content has-text-left">
+                                    <div class="media">
+                                        <div class="media-left">
+                                            <div class="title is-4">Playroom</div>
+                                            <div class="subtitle is-6">Deep Blending</div>
+                                        </div>
+                                        <div class="media-center" style="width: 100%;">
+                                        </div>
+                                        <div class="media-right">
+                                            <span class="tag">
+                                                22 MB
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="column demo-card">
+                        <div class="card">
+                            <a target="_blank"
+                                href="https://keksboter.github.io/web-splat/?file=./scenes/lego/point_cloud/iteration_35000/point_cloud.npz&scene=./scenes/lego/cameras.json">
+                                <div class="card-image">
+                                    <figure class="image">
+                                        <img src="static/img/samples/lego/ours/00000.png" alt="Placeholder image">
+                                    </figure>
+                                </div>
+                                <div class="card-content has-text-left">
+                                    <div class="media">
+                                        <div class="media-left">
+                                            <div class="title is-4">Lego</div>
+                                            <div class="subtitle is-6">Synthetic-NeRF</div>
+                                        </div>
+                                        <div class="media-center" style="width: 100%;">
+                                        </div>
+                                        <div class="media-right">
+                                            <span class="tag">
+                                                4 MB
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="column demo-card">
+                        <div class="card">
+                            <a target="_blank"
+                                href="https://keksboter.github.io/web-splat/?file=./scenes/ship/point_cloud/iteration_35000/point_cloud.npz&scene=./scenes/ship/cameras.json">
+                                <div class="card-image">
+                                    <figure class="image">
+                                        <img src="static/img/samples/ship/ours/00000.png" alt="Placeholder image">
+                                    </figure>
+                                </div>
+                                <div class="card-content has-text-left">
+                                    <div class="media">
+                                        <div class="media-left">
+                                            <div class="title is-4">Ship</div>
+                                            <div class="subtitle is-6">Synthetic-NeRF</div>
+                                        </div>
+                                        <div class="media-center" style="width: 100%;">
+                                        </div>
+                                        <div class="media-right">
+                                            <span class="tag">
+                                                5 MB
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="is-centered">
+                        <a href="https://keksboter.github.io/web-splat/demo.html">
+                            <p style="margin: 1rem;">All scenes used in the paper.</p>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+
+        <section class="section">
+            <div class="container is-max-desktop">
+
+                <div class="columns is-centered has-text-centered">
+                    <h2 class="title is-3">Examples</h2>
+                </div>
+                <div class="column">
+                    <p>Image comparisons for the baseline and compressed reconstruction. All images are taken from the
+                        test
+                        set.</p>
+                </div>
+                <div class="columns is-centered has-text-centered">
+                    <!-- Visual Effects. -->
+                    <div class="column">
+                        <div class="content">
+                            <div class="bal-container-small image-compare">
+
+                                <div class="bal-after">
+                                    <img src="static/img/samples/bicycle/ours/00000.png">
+                                    <div class="bal-afterPosition afterLabel" style="z-index:1;">
+                                        Ours
+                                    </div>
+                                    <div class="bal-afterPosition afterSize" style="z-index:1;">
+                                        47 MB
+                                    </div>
+                                </div>
+
+                                <div class="bal-before" style="width:96.4968152866242%;">
+                                    <div class="bal-before-inset" style="width: 539px;">
+                                        <img src="static/img/samples/bicycle/baseline/00000.png">
+                                        <div class="bal-beforePosition beforeLabel">
+                                            3DGS
+                                        </div>
+                                        <div class="bal-beforePosition beforeSize">
+                                            1.5 GB
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="bal-handle" style="left:96.4968152866242%;">
+                                    <span class=" handle-left-arrow"></span>
+                                    <span class="handle-right-arrow"></span>
+                                </div>
+
+                            </div>
+
+                            <div class="bal-container-small image-compare">
+
+                                <div class="bal-after">
+                                    <img src="static/img/samples/garden/ours/00000.png">
+                                    <div class="bal-afterPosition afterLabel" style="z-index:1;">
+                                        Ours
+                                    </div>
+                                    <div class="bal-afterPosition afterSize" style="z-index:1;">
+                                        47 MB
+                                    </div>
+                                </div>
+
+                                <div class="bal-before" style="width:96.4968152866242%;">
+                                    <div class="bal-before-inset" style="width: 539px;">
+                                        <img src="static/img/samples/garden/baseline/00000.png">
+                                        <div class="bal-beforePosition beforeLabel">
+                                            3DGS
+                                        </div>
+                                        <div class="bal-beforePosition beforeSize">
+                                            1.4 GB
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="bal-handle" style="left:96.4968152866242%;">
+                                    <span class=" handle-left-arrow"></span>
+                                    <span class="handle-right-arrow"></span>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="content">
+                            <div class="bal-container-small image-compare">
+
+                                <div class="bal-after">
+                                    <img src="static/img/samples/truck/ours/00000.png">
+                                    <div class="bal-afterPosition afterLabel" style="z-index:1;">
+                                        Ours
+                                    </div>
+                                    <div class="bal-afterPosition afterSize" style="z-index:1;">
+                                        21 MB
+                                    </div>
+                                </div>
+
+                                <div class="bal-before" style="width:96.4968152866242%;">
+                                    <div class="bal-before-inset" style="width: 539px;">
+                                        <img src="static/img/samples/truck/baseline/00000.png">
+                                        <div class="bal-beforePosition beforeLabel">
+                                            3DGS
+                                        </div>
+                                        <div class="bal-beforePosition beforeSize">
+                                            600 MB
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="bal-handle" style="left:96.4968152866242%;">
+                                    <span class=" handle-left-arrow"></span>
+                                    <span class="handle-right-arrow"></span>
+                                </div>
+
+                            </div>
+
+                            <div class="bal-container-small image-compare">
+
+                                <div class="bal-after">
+                                    <img src="static/img/samples/playroom/ours/00002.png">
+                                    <div class="bal-afterPosition afterLabel" style="z-index:1;">
+                                        Ours
+                                    </div>
+                                    <div class="bal-afterPosition afterSize" style="z-index:1;">
+                                        22 MB
+                                    </div>
+                                </div>
+
+                                <div class="bal-before" style="width:96.4968152866242%;">
+                                    <div class="bal-before-inset" style="width: 539px;">
+                                        <img src="static/img/samples/playroom/baseline/00002.png">
+                                        <div class="bal-beforePosition beforeLabel">
+                                            3DGS
+                                        </div>
+                                        <div class="bal-beforePosition beforeSize">
+                                            602 MB
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="bal-handle" style="left:96.4968152866242%;">
+                                    <span class=" handle-left-arrow"></span>
+                                    <span class="handle-right-arrow"></span>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!--/ Visual Effects. -->
+                </div>
+                <!--/ Matting. -->
+
+
+
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container is-max-desktop">
+
+                <!-- Concurrent Work. -->
+                <div class="is-centered">
+                    <div class="is-full-width">
+                        <h2 class="title is-3">Concurrent Work</h2>
+
+                        <div class="content has-text-justified">
+                            <p>
+                                There's a lot of concorrent work that was introduced around the same time as ours:
+                            </p>
+                            <p>
+                                <a href="https://lightgaussian.github.io/">LightGaussian: Unbounded 3D Gaussian
+                                    Compression with 15x Reduction and 200+ FPS
+                            </p>
+                            <p>
+                                <a href="https://ucdvision.github.io/compact3d/">Compact3D: Compressing Gaussian Splat
+                                    Radiance Field Models with Vector Quantization</a>
+                            </p>
+                            <p>
+                                <a href="https://arxiv.org/abs/2311.13681">Compact 3D Gaussian Representation for
+                                    Radiance Field</a>
+                            </p>
+                            <p>
+                                <a href="https://fraunhoferhhi.github.io/Self-Organizing-Gaussians/">Compact 3D Scene
+                                    Representation via Self-Organizing Gaussian Grids</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <!--/ Concurrent Work. -->
+            </div>
+        </section>
+
+        <section class="section" id="BibTeX">
+            <div class="container is-max-desktop content">
+                <h2 class="title">BibTeX</h2>
+                <pre><code>@InProceedings{Niedermayr_2024_CVPR,
+    author    = {Niedermayr, Simon and Stumpfegger, Josef and Westermann, R\"udiger},
+    title     = {Compressed 3D Gaussian Splatting for Accelerated Novel View Synthesis},
+    booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+    month     = {June},
+    year      = {2024},
+    pages     = {10349-10358}
+}</code></pre>
+            </div>
+        </section>
+
+
+        <footer class="footer">
+            <div class="container">
+                <div class="content has-text-centered">
+                    <a class="icon-link" href="">
+                        <i class="fas fa-file-pdf"></i>
+                    </a>
+                    <a class="icon-link" href="https://github.com/KeKsBoTeR" class="external-link" disabled>
+                        <i class="fab fa-github"></i>
+                    </a>
+                </div>
+                <div class="columns is-centered">
+                    <div class="column is-8">
+                        <div class="content">
+                            <p>
+                                Website source code borrowed from <a href="https://keunhong.com">Keunhong Park</a>'s <a
+                                    href="https://github.com/nerfies/nerfies.github.io">Nerfies website</a>.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <script>
+            for (var elm of document.querySelectorAll(".image-compare")) {
+                new BeforeAfter(elm)
+            }
+            var options = {
+                slidesToScroll: 1,
+                slidesToShow: 3,
+                loop: true,
+                infinite: true,
+                autoplay: false,
+                autoplaySpeed: 3000,
+            }
+
+            // Initialize all div with carousel class
+            var carousels = bulmaCarousel.attach('.carousel', options);
+
+            for (var i = 0; i < carousels.length; i++) {
+                // Add listener to  event
+                carousels[i].on('before:show', () => { });
+            }
+
+            // Access to bulmaCarousel instance of an element
+            var element = document.querySelector('#my-element');
+            if (element && element.bulmaCarousel) {
+                // bulmaCarousel instance is available as element.bulmaCarousel
+                element.bulmaCarousel.on('before-show', () => { });
+            }
+        </script>
+    </body>
+
+    </html>

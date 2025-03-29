@@ -1,0 +1,133 @@
+# Test conditions for N17995 CTC C2 using TMC13 trisoup
+# trisoup lossy-geom  --  lossy-attrs liftt
+#  -- cat 1 only, since trisoup doesn't apply to very sparce clouds
+---
+categories:
+  lossy-geom-lossy-attrs:
+    encflags:
+     - mode: 0
+
+     ##
+     # partitioning for trisoup
+     - sliceMaxPointsTrisoup: 1100000
+     - sliceMaxPoints: 1000000
+     - sliceMinPoints: 449000
+     ##
+     # geometry parameters (trisoup)
+     - neighbourAvailBoundaryLog2: 8
+     - intra_pred_max_node_size_log2: 6
+     - inferredDirectCodingMode: 0
+     - planarEnabled: 1
+     -
+       - !conditional '"${group}" eq "solid"'
+       - planarEnabled: '${enablePlanar}'
+     -
+       - !conditional '"${group}" eq "dense"'
+       - planarEnabled: '${enablePlanar}'
+     - planarModeIdcmUse: 0
+     - positionQuantizationScale: '$eval{ 1 / (1 << ( ${src-geometry-precision} - ${test-depth} )) }'
+     - trisoupNodeSizeLog2:
+         r01: '$eval{5 + ${trisoupNodeSizeLog2-offset}}'
+         r02: '$eval{4 + ${trisoupNodeSizeLog2-offset}}'
+         r03: '$eval{3 + ${trisoupNodeSizeLog2-offset}}'
+         r04: '$eval{2 + ${trisoupNodeSizeLog2-offset}}'
+     - trisoupQuantizationBits: 2
+     - trisoupCentroidResidualEnabled:
+         r01: 1
+         r02: 1
+         r03: 1
+         r04: 0
+     - trisoupFaceVertexEnabled:
+         r01: 1
+         r02: 1
+         r03: 1
+         r04: 0
+     - trisoupFineRayTracingEnabled: 0
+     - trisoupImprovedEncoderEnabled: 1
+
+     ####
+     # attribute coding (common options -- relies on option ordering)
+     #  - use lifting transform for lossy conditions
+     - convertPlyColourspace: 1
+     - transformType: 2
+     - numberOfNearestNeighborsInPrediction: 3
+     - levelOfDetailCount: '$eval{ ${seq_lod} || 12 }'
+     - lodDecimator: 0
+     -
+       - !conditional '"${group}" =~ m{^cat3}'
+       - lodDecimator: 1
+       - lod_neigh_bias: ${seq_lod_bias}
+
+     ##
+     # attribute coding -- colour
+     -
+       - !conditional '${has_colour}'
+       - adaptivePredictionThreshold: 64
+       - qp:
+           r01: 40
+           r02: 34
+           r03: 28
+           r04: 22
+       - qpChromaOffset: 0
+       - bitdepth: 8
+       - attribute: color
+
+    decflags:
+     - mode: 1
+     - convertPlyColourspace: 1
+
+    pcerrorflags:
+     - dropdups: 2
+     - neighborsProc: 1
+
+    sequences:
+      # cat1-solid
+      basketball_player_vox11_00000200:  { enablePlanar: 0, test-depth: 11, trisoupNodeSizeLog2-offset: 0 }
+      dancer_vox11_00000001:             { enablePlanar: 0, test-depth: 11, trisoupNodeSizeLog2-offset: 0 }
+      facade_00064_vox11:                { enablePlanar: 0, test-depth: 11, trisoupNodeSizeLog2-offset: 0 }
+      longdress_vox10_1300:              { enablePlanar: 0, test-depth: 10, trisoupNodeSizeLog2-offset: 0 }
+      loot_vox10_1200:                   { enablePlanar: 0, test-depth: 10, trisoupNodeSizeLog2-offset: 0 }
+      queen_0200:                        { enablePlanar: 0, test-depth: 10, trisoupNodeSizeLog2-offset: 0 }
+      redandblack_vox10_1550:            { enablePlanar: 0, test-depth: 10, trisoupNodeSizeLog2-offset: 0 }
+      soldier_vox10_0690:                { enablePlanar: 0, test-depth: 10, trisoupNodeSizeLog2-offset: 0 }
+      thaidancer_viewdep_vox12:          { enablePlanar: 0, test-depth: 11, trisoupNodeSizeLog2-offset: 0 }
+      # cat1-dense
+      boxer_viewdep_vox12:               { enablePlanar: 0, test-depth: 11, trisoupNodeSizeLog2-offset: 0 }
+      facade_00009_vox12:                { enablePlanar: 1, test-depth: 11, trisoupNodeSizeLog2-offset: 1 }
+      facade_00015_vox14:                { enablePlanar: 1, test-depth: 12, trisoupNodeSizeLog2-offset: 0 }
+      facade_00064_vox14:                { enablePlanar: 1, test-depth: 12, trisoupNodeSizeLog2-offset: 0 }
+      frog_00067_vox12:                  { enablePlanar: 1, test-depth: 11, trisoupNodeSizeLog2-offset: 1 }
+      head_00039_vox12:                  { enablePlanar: 0, test-depth: 12, trisoupNodeSizeLog2-offset: 1 }
+      house_without_roof_00057_vox12:    { enablePlanar: 1, test-depth: 11, trisoupNodeSizeLog2-offset: 1 }
+      landscape_00014_vox14:             { enablePlanar: 0, test-depth: 12, trisoupNodeSizeLog2-offset: 0 }
+      longdress_viewdep_vox12:           { enablePlanar: 0, test-depth: 11, trisoupNodeSizeLog2-offset: 0 }
+      loot_viewdep_vox12:                { enablePlanar: 0, test-depth: 11, trisoupNodeSizeLog2-offset: 0 }
+      redandblack_viewdep_vox12:         { enablePlanar: 0, test-depth: 11, trisoupNodeSizeLog2-offset: 0 }
+      soldier_viewdep_vox12:             { enablePlanar: 0, test-depth: 11, trisoupNodeSizeLog2-offset: 0 }
+      # cat1-sparse
+      arco_valentino_dense_vox12:        { enablePlanar: 1, test-depth:  9, trisoupNodeSizeLog2-offset: 0 }
+      egyptian_mask_vox12:               { enablePlanar: 1, test-depth:  9, trisoupNodeSizeLog2-offset: 0 }
+      palazzo_carignano_dense_vox14:     { enablePlanar: 1, test-depth:  9, trisoupNodeSizeLog2-offset: 0 }
+      shiva_00035_vox12:                 { enablePlanar: 1, test-depth: 10, trisoupNodeSizeLog2-offset: 1 }
+      stanford_area_2_vox16:             { enablePlanar: 1, test-depth: 12, trisoupNodeSizeLog2-offset: 0 }
+      stanford_area_4_vox16:             { enablePlanar: 1, test-depth: 12, trisoupNodeSizeLog2-offset: 0 }
+      staue_klimt_vox12:                 { enablePlanar: 1, test-depth:  9, trisoupNodeSizeLog2-offset: 0 }
+      ulb_unicorn_hires_vox15:           { enablePlanar: 1, test-depth: 12, trisoupNodeSizeLog2-offset: 0 }
+      ulb_unicorn_vox13:                 { enablePlanar: 1, test-depth: 11, trisoupNodeSizeLog2-offset: 2 }
+      # cat1-scant
+      arco_valentino_dense_vox20:        { enablePlanar: 1, test-depth:  9, trisoupNodeSizeLog2-offset: 0 }
+      egyptian_mask_vox20:               { enablePlanar: 1, test-depth:  9, trisoupNodeSizeLog2-offset: 0 }
+      facade_00009_vox20:                { enablePlanar: 1, test-depth: 11, trisoupNodeSizeLog2-offset: 1 }
+      facade_00015_vox20:                { enablePlanar: 1, test-depth: 12, trisoupNodeSizeLog2-offset: 0 }
+      facade_00064_vox20:                { enablePlanar: 1, test-depth: 12, trisoupNodeSizeLog2-offset: 0 }
+      frog_00067_vox20:                  { enablePlanar: 1, test-depth: 11, trisoupNodeSizeLog2-offset: 1 }
+      head_00039_vox20:                  { enablePlanar: 1, test-depth: 12, trisoupNodeSizeLog2-offset: 1 }
+      house_without_roof_00057_vox20:    { enablePlanar: 1, test-depth: 11, trisoupNodeSizeLog2-offset: 1 }
+      landscape_00014_vox20:             { enablePlanar: 1, test-depth: 12, trisoupNodeSizeLog2-offset: 0 }
+      palazzo_carignano_dense_vox20:     { enablePlanar: 1, test-depth:  9, trisoupNodeSizeLog2-offset: 0 }
+      shiva_00035_vox20:                 { enablePlanar: 1, test-depth: 10, trisoupNodeSizeLog2-offset: 1 }
+      stanford_area_2_vox20:             { enablePlanar: 1, test-depth: 12, trisoupNodeSizeLog2-offset: 0 }
+      stanford_area_4_vox20:             { enablePlanar: 1, test-depth: 12, trisoupNodeSizeLog2-offset: 0 }
+      staue_klimt_vox20:                 { enablePlanar: 1, test-depth:  9, trisoupNodeSizeLog2-offset: 0 }
+      ulb_unicorn_hires_vox20:           { enablePlanar: 1, test-depth: 12, trisoupNodeSizeLog2-offset: 0 }
+      ulb_unicorn_vox20:                 { enablePlanar: 1, test-depth: 11, trisoupNodeSizeLog2-offset: 2 }

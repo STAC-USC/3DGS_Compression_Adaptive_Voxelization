@@ -1,0 +1,1 @@
+Namespace(eval=True, images='images', model_path='./eval/train', resolution=1, sh_degree=3, source_path='f:/bkerbl/Downloads/tandt/train', white_background=False)
