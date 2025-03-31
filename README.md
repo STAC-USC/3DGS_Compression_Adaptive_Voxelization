@@ -4,6 +4,8 @@
 \*University of Southern California, Los Angeles, CA  
 †Meta, Menlo Park, CA  
 
+![3DGS Demo](images/pipeline.png)
+
 ## Abstract
 
 We present a novel compression framework for 3D Gaussian splatting (3DGS) data that leverages transform coding tools originally developed for point clouds.  
