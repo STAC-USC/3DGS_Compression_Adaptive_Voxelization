@@ -30,12 +30,90 @@ We present a novel compression framework for 3D Gaussian splatting (3DGS) data t
 
 ### Standard Folder Structure
 ```text
-📁 my-project/
-├── data/
-│ └── samples.csv
-├── src/
-│ └── main.py
+📁 project_root/
+
+├── 📁 attributes_compressed/
+├── 📁 code_Adaptive/
+│   ├── 📁 Lossless_covar/
+│   │   ├── extract_all_pq.py
+│   │   ├── postprocess.py
+│   │   ├── encoder.py
+│   │   ├── decoder.py
+│   │   └── codec.py
+│   ├── 📁 Lossless_covar/
+│   │   ├── extract_all_pq.py
+│   │   ├── postprocess.py
+│   │   ├── encoder.py
+│   │   ├── decoder.py
+│   │   └── codec.py
+│   ├── 📁 Retrain_3DGS/
+│   │   ├── train.py
+│   │   ├── render.py
+│   │   ├── metrics.py
+│   │   └── adapt_voxel_recolor.py
+│   ├── 📁 Retrain_PC/
+│   │   ├── train.py
+│   │   ├── render.py
+│   │   └── metrics.py
+│   ├── 📁 VQ_script/
+│   │   ├── compress.py
+│   │   ├── render.py
+│   │   └── metrics.py
+│   ├── plot_RD.py
+│   └── voxelization.py
+├── 📁 colmap_dataset/
+│   ├── 📁 bicycle/
+│   ├── 📁 bonsai/
+│   ├── 📁 counter/
+│   ├── 📁 drjohnson/
+│   ├── 📁 flowers/
+│   ├── 📁 garden/
+│   ├── 📁 kitchen/
+│   ├── 📁 playroom/
+│   ├── 📁 room/
+│   ├── 📁 stump/
+│   ├── 📁 train/
+│   ├── 📁 treehill/
+│   └── 📁 truck/
+├── 📁 original_model/
+│   ├── 📁 bicycle/
+│   ├── 📁 bonsai/
+│   ├── 📁 counter/
+│   ├── 📁 drjohnson/
+│   ├── 📁 flowers/
+│   ├── 📁 garden/
+│   ├── 📁 kitchen/
+│   ├── 📁 playroom/
+│   ├── 📁 room/
+│   ├── 📁 stump/
+│   ├── 📁 train/
+│   ├── 📁 treehill/
+│   └── 📁 truck/
+├── 📁 test_model/
+│   ├── 📁 bicycle/
+│   ├── 📁 bonsai/
+│   ├── 📁 counter/
+│   ├── 📁 drjohnson/
+│   ├── 📁 flowers/
+│   ├── 📁 garden/
+│   ├── 📁 kitchen/
+│   ├── 📁 playroom/
+│   ├── 📁 room/
+│   ├── 📁 stump/
+│   ├── 📁 train/
+│   ├── 📁 treehill/
+│   └── 📁 truck/
+├── 📁 RDO/
+│   ├── 📁 bpp/
+│   ├── 📁 Meta_data/
+│   ├── 📁 PSNR/
+│   └── 📁 PSNR_per_view/
+├── 📁 reconstructed_3DGS/
+├── 📁 retrain_model/
+├── 📁 voxelized_adapt/
+├── 📁 VQ_model/
 └── README.md
 ```
+
 
 ### Instruction
