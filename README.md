@@ -1,7 +1,8 @@
 # A GPCC-based Compression Framework for 3D Gaussian Splatting
 
 **Chenjunjie Wang\*, Shashank N. Sridhara\*, Eduardo Pavez\*, Antonio Ortega\*, Cheng Chang†**  
-\*University of Southern California, Los Angeles, CA,   †Meta, Menlo Park, CA  
+\*University of Southern California, Los Angeles, CA, 
+†Meta, Menlo Park, CA  
 
 ![3DGS Demo](images/pipeline.png)
 
