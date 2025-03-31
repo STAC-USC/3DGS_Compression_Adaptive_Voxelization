@@ -24,12 +24,9 @@ We present a novel compression framework for 3D Gaussian splatting (3DGS) data t
 ## Installation
 
 ### Requirement
-
-#### - Conda environment 1 (gaussian_splatting)
-
-#### - Conda environment 2 (NVS)
-
-#### - Geometry-based Point Cloud Compression Codec
+- Conda environment 1 (gaussian_splatting)
+- Conda environment 2 (NVS)
+- Geometry-based Point Cloud Compression (GPCC) Codec
 
 ### Standard Folder Structure
 
