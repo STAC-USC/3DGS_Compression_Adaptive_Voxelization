@@ -3,7 +3,6 @@
 **Chenjunjie Wang\*, Shashank N. Sridhara\*, Eduardo Pavez\*, Antonio Ortega\*, Cheng Chang†**  
 \*University of Southern California, Los Angeles, CA  
 †Meta, Menlo Park, CA  
-> *This work was funded in part by a gift from Meta.*
 
 ---
 
