@@ -29,5 +29,13 @@ We present a novel compression framework for 3D Gaussian splatting (3DGS) data t
 - Geometry-based Point Cloud Compression (GPCC) Codec
 
 ### Standard Folder Structure
+```text
+📁 my-project/
+├── data/
+│ └── samples.csv
+├── src/
+│ └── main.py
+└── README.md
+```
 
 ### Instruction
