@@ -18,3 +18,19 @@ We present a novel compression framework for 3D Gaussian splatting (3DGS) data t
 - Adaptive Voxelization  
 - 3D Data Compression  
 - Point Cloud Compression
+
+---
+
+## Installation
+
+### Requirement
+
+#### Conda environment 1 (gaussian_splatting)
+
+#### Conda environment 2 (NVS)
+
+#### Geometry-based Point Cloud Compression Codec
+
+### Standard Folder Structure
+
+### Instruction
