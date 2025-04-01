@@ -19,6 +19,25 @@ def main():
     current_script_dir = os.path.dirname(os.path.abspath(__file__))
     root_path = os.path.abspath(os.path.join(current_script_dir, ".."))
     print(f"[DEBUG] Root path: {root_path}")
+
+    # Step 2: Define your 3-level folder structure
+    folder_structure = [
+        "attributes_compressed",
+        "reconstructed_3DGS",
+        "retrain_model",
+        "VQ_model",
+        "voxelized_adapt",
+        "RDO/bpp",
+        "RDO/Meta_data",
+        "RDO/PSNR",
+        "RDO/PSNR_per_view",
+    ]
+
+    # Step 3: Create directories
+    for relative_path in folder_structure:
+        full_path = os.path.join(root_path, relative_path)
+        os.makedirs(full_path, exist_ok=True)
+        print(f"[INFO] Created folder: {full_path}")
     
     # Construct the full path to adapt_voxel_recolor.py (located in the retrain_3DGS folder under the root directory)
     script_path = os.path.join(root_path, "code_Adaptive", "retrain_3DGS", "adapt_voxel_recolor.py")
