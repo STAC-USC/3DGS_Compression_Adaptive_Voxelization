@@ -73,10 +73,10 @@ def run_compression(script_path, dataset_name, model_folder, output_vq_folder, c
             print(f"ERROR: No iteration folders found in {abs_point_cloud_path}")
             raise FileNotFoundError(f"No iteration folders found in {abs_point_cloud_path}")
 
-        # Find the folder corresponding to the maximum number of iterations
+        # Find the folder corresponding to the maximum iteration
         max_iteration_number, max_iteration_folder = max(iteration_folders)
 
-        # Construct the input and output paths for the npz to ply conversion
+        # Construct input and output paths for npz to ply conversion
         input_npz_path = os.path.join(abs_point_cloud_path, max_iteration_folder, 'point_cloud.npz')
         output_ply_path = os.path.join(abs_point_cloud_path, max_iteration_folder, 'point_cloud.ply')
 
@@ -93,7 +93,6 @@ def run_compression(script_path, dataset_name, model_folder, output_vq_folder, c
         raise
 
 def main():
-    # Parsing command line arguments
     parser = argparse.ArgumentParser(description='Run compression and metrics for a given model folder')
     parser.add_argument('--depth_start', type=int, required=True, help='Initial depth for voxelization')
     parser.add_argument('--voxel_thr', type=int, required=True, help='Threshold for small voxel point count')
@@ -107,27 +106,27 @@ def main():
     dataset_name = args.dataset_name
     depth = args.depth_start
     thr = args.voxel_thr
-    # retrain_mode is converted to uppercase, such as "PC" or "3DGS"
+    # Convert retrain_mode to uppercase, e.g., "PC" or "3DGS"
     mode = args.retrain_mode.upper()
     suffix = "adapt" if args.use_adaptive.lower() == "true" else "uniform"
 
 
-    # Set the two folders before the current script directory as the root directory
+    # Set the root directory to two levels up from the current script
     current_script_dir = os.path.dirname(os.path.abspath(__file__))
     root_path = os.path.abspath(os.path.join(current_script_dir, "..", ".."))
     print(f"[DEBUG] Root path determined as: {root_path}")
 
-    # Define the retrain_model and VQ_model folder paths (relative to the root directory)
+    # Define paths for retrain_model and VQ_model folders (relative to root path)
     retrain_model_dir = os.path.join(root_path, "retrain_model")
     vq_model_dir = os.path.join(root_path, "VQ_model")
     colmap_dataset_dir = os.path.join(root_path, "colmap_dataset")
-    # Assume compress.py, render.py, metrics.py, npz2ply.py are in the directory code_YUV/VQ_script
+    # Assume compress.py, render.py, metrics.py, and npz2ply.py are under code_YUV/VQ_script
     script_path = os.path.join(root_path, "code_Adaptive", "VQ_script")
 
-    # Construct the target model folder name based on command line parameters
-    # Determine the suffix based on --use_adaptive
+    # 	Construct the target model folder name based on command-line arguments
+    # 	Determine suffix based on --use_adaptive
     suffix = "adapt" if args.use_adaptive.lower() == "true" else "uniform"
-    # retrain_mode is converted to uppercase, such as "PC" or "3DGS"
+    # Convert retrain_mode to uppercase, e.g., "PC" or "3DGS"
     mode = args.retrain_mode.upper()
     model_folder_name = f"{args.dataset_name}_depth_{args.depth_start}_thr_{args.voxel_thr}_{mode}_{suffix}"
     model_folder = os.path.join(retrain_model_dir, model_folder_name)
@@ -135,27 +134,27 @@ def main():
         raise FileNotFoundError(f"Model folder not found: {model_folder}")
     print(f"[DEBUG] Found model folder: {model_folder}")
 
-    # Create a folder with the same name as output_vq under VQ_model
+    # Create a folder with the same name under VQ_model as output_vq
     output_vq_folder = os.path.join(vq_model_dir, model_folder_name)
     if not os.path.exists(output_vq_folder):
         os.makedirs(output_vq_folder)
     print(f"[DEBUG] VQ output folder: {output_vq_folder}")
 
     # Modify source_path to use colmap_dataset_dir
-    # Here source_path will be used as the --source_path parameter of compress.py
-    # Here by default there is a dataset_name folder under colmap_dataset_dir
-    # For example: {root_path}/colmap_dataset/{dataset_name}
+    # Here, source_path will be passed as the --source_path argument to compress.py
+    # Assumes a dataset_name folder exists under colmap_dataset_dir
+    # e.g. {root_path}/colmap_dataset/{dataset_name}
     source_path = os.path.join(colmap_dataset_dir, args.dataset_name)
     if not os.path.exists(source_path):
         raise FileNotFoundError(f"Colmap dataset folder not found: {source_path}")
 
-    # 打印调试信息
+    # Print debug information
     print(f"DEBUG: Running compression for model folder: {model_folder}")
     print(f"DEBUG: Using script path: {script_path}")
     print(f"DEBUG: Source dataset path: {source_path}")
     print(f"DEBUG: Output VQ folder: {output_vq_folder}")
 
-    # # Step 1 ~ Step 4：依次运行 compress.py, render.py, metrics.py, npz2ply.py
+    # # Step 1 ~ Step 4: sequentially run compress.py, render.py, metrics.py, and npz2ply.py
     # try:
     #     run_compression(script_path, args.dataset_name, model_folder, output_vq_folder, colmap_dataset_dir)
     # except Exception as e:
