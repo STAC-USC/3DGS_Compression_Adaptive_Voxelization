@@ -24,7 +24,7 @@ def main():
     dataset_name = args.dataset_name
     depth = args.depth_start
     thr = args.voxel_thr
-    # Convert retrain_mode to uppercase, e.g., "PC" or "3DGS"
+    # Convert retrain_mode to uppercase for consistency, e.g., "PC" or "3DGS"
     mode = args.retrain_mode.upper()
     suffix = "adapt" if args.use_adaptive.lower() == "true" else "uniform"
     comp_mode = args.comp_mode.lower()
@@ -32,7 +32,7 @@ def main():
     current_script_dir = os.path.dirname(os.path.abspath(__file__))
     root_path = base_path = os.path.abspath(os.path.join(current_script_dir, '..'))
 
-    # Choose the directory for postprocess.py based on comp_mode
+    # Select the directory of postprocess.py based on comp_mode
     if comp_mode == "lossless":
         postprocess_path = os.path.join(root_path, 'code_Adaptive', 'Lossless_covar')
     elif comp_mode == "lossy":
@@ -40,7 +40,7 @@ def main():
     else:
         raise ValueError("comp_mode must be either 'lossy' or 'lossless'")
     
-    # Construct command-line arguments for postprocess.py (pass them as-is)
+    # Construct the command-line arguments for postprocess.py (pass through unchanged)
     postprocess_cmd = [
         sys.executable, "postprocess.py",
         "--depth_start", str(depth),
@@ -50,7 +50,7 @@ def main():
         "--use_adaptive", args.use_adaptive 
     ]
     print(f"[DEBUG] Running postprocess command in {postprocess_path}: {' '.join(postprocess_cmd)}")
-    subprocess.run(postprocess_cmd, cwd=postprocess_path, check=True)
+    # subprocess.run(postprocess_cmd, cwd=postprocess_path, check=True)
 
     extract_all_pq_cmd = [
         sys.executable, "extract_all_pq.py",
@@ -67,3 +67,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
