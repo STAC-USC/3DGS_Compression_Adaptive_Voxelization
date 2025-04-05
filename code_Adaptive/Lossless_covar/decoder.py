@@ -229,23 +229,23 @@ def compare_points(dc_points, other_points, name):
     if dc_points.shape != other_points.shape:
         print(f"Error: sorted_dc_points and {name} have different shapes: {dc_points.shape} vs {other_points.shape}")
         return
-
+    
     num_points = dc_points.shape[0]
     chunk_size = num_points // cpu_count()
     indices = [(i, min(i + chunk_size, num_points)) for i in range(0, num_points, chunk_size)]
-
-    # Create chunks for parallel comparison
+    
+    # Create data chunks for multiprocessing comparison
     with Pool() as pool:
         results = pool.starmap(compare_chunk, [(dc_points[start:end], other_points[start:end]) for start, end in indices])
-
+    
     differences = np.hstack(results)
     num_differences = np.sum(differences)
-
+    
     if num_differences == 0:
         print(f"sorted_dc_points and {name} are identical within tolerance.")
     else:
         print(f"sorted_dc_points and {name} differ at {num_differences} points.")
-        # Output the first 5 differing points
+        # Output the first 5 different points
         diff_indices = np.where(differences)[0]
         print(f"First 5 differences:")
         for idx in diff_indices[:5]:
@@ -253,7 +253,7 @@ def compare_points(dc_points, other_points, name):
 
 
 def main():
-    # Automatically get root path (two levels up from current script)
+
     current_script_dir = os.path.dirname(os.path.abspath(__file__))
     root_path = os.path.abspath(os.path.join(current_script_dir, "..", ".."))
     print(f"[DEBUG] Root path determined as: {root_path}")
@@ -271,14 +271,14 @@ def main():
     dataset_name = args.dataset_name
     depth = args.depth_start
     thr = args.voxel_thr
-    # Normalize retrain_mode to uppercase, e.g., "PC" or "3DGS"
+    # Convert retrain_mode to uppercase, e.g., "PC" or "3DGS"
     mode = args.retrain_mode.upper()
     suffix = "adapt" if args.use_adaptive.lower() == "true" else "uniform"
-
-    # Output directory for compressed attributes
+    
     output_base_dir = os.path.join(root_path, "attributes_compressed", f"{dataset_name}_depth_{depth}_thr_{thr}_{mode}_{suffix}_lossless")
     tmc3_path = os.path.join(root_path,  "mpeg-pcc-tmc13-master", "build", "tmc3", "Release", "tmc3.exe")
     ply_base_dir = os.path.join(root_path, "retrain_model")
+    
 
     # Define compressed and decompressed folder names
     compression_folders = {
@@ -296,29 +296,37 @@ def main():
         "rot": "rot_decompressed"
     }
 
+
+
     allowed_pq_combinations = [
-        # (f_rest_qp, f_dc_qp, opacity_qp)
-        (40, 4, 16), (40, 4, 34), (40, 4, 40),
-        (40, 16, 16), (40, 16, 34), (40, 16, 40),
-        (40, 20, 16), (40, 20, 34), (40, 20, 40),
-        (40, 24, 16), (40, 24, 34), (40, 24, 40),
-        (40, 28, 16), (40, 28, 34), (40, 28, 40),
-        (38, 4, 4), (38, 16, 4),
-        (34, 4, 4), (34, 16, 4),
-        (31, 4, 4), (31, 16, 4),
-        (28, 4, 4), (28, 16, 4),
-        (38, 4, 16), (38, 16, 16),
-        (34, 4, 16), (34, 16, 16),
-        (31, 4, 16), (31, 16, 16),
-        (28, 4, 16), (28, 16, 16),
-        (38, 4, 28), (38, 16, 28),
-        (34, 4, 28), (34, 16, 28),
-        (31, 4, 28), (31, 16, 28),
-        (28, 4, 28), (28, 16, 28),
-        (16, 4, 4), (16, 16, 4),
-        (4, 4, 4), (4, 16, 4),
-        (16, 4, 16), (4, 4, 16),
+        # # (f_rest_qp, f_dc_qp, opacity_qp)
+        # (40, 4, 16), (40, 4, 34), (40, 4, 40),
+        # (40, 16, 16), (40, 16, 34), (40, 16, 40),
+        # (40, 20, 16), (40, 20, 34), (40, 20, 40),
+        # (40, 24, 16), (40, 24, 34), (40, 24, 40),
+        # (40, 28, 16), (40, 28, 34), (40, 28, 40),
+	    # (38, 4, 4), (38, 16, 4),
+        # (34, 4, 4), (34, 16, 4),
+        # (31, 4, 4), (31, 16, 4),
+        # (28, 4, 4), (28, 16, 4),
+        # (38, 4, 16), (38, 16, 16),
+        # (34, 4, 16), (34, 16, 16),
+        # (31, 4, 16), (31, 16, 16),
+        # (28, 4, 16), (28, 16, 16),
+        # (38, 4, 28), (38, 16, 28),
+        # (34, 4, 28), (34, 16, 28),
+        # (31, 4, 28), (31, 16, 28),
+        # (28, 4, 28), (28, 16, 28),
+        # (16, 4, 4), (16, 16, 4),
+        # (4, 4, 4), (4, 16, 4),
+        # (16, 4, 16), (4, 4, 16),
+   
+        (4, 4, 4),
+
+
     ]
+
+
 
     # Decompress files for each attribute type
     decompress_files(
@@ -383,36 +391,38 @@ def main():
         sorted_opacity_points, opacity_sort_idx = morton_order_sort(opacity_points)
         denormalized_opacity = uint16_to_float(reflectance[opacity_sort_idx], meta_data['Attribute']['opacity']['min'], meta_data['Attribute']['opacity']['max'])
 
-        # Fixed usage of rot_reflectance in main function
-        # Handle scale attribute: denormalization and decompression
+        # Corrected usage of rot_reflectance in main function
+        # Modify scale file denormalization and decompression section
         denormalized_scale = []
         for i, scale_attr in enumerate(['scale_0', 'scale_1', 'scale_2']):
             scale_ply = os.path.join(output_base_dir, decompression_folders["scale"], f"{dataset_name}_{scale_attr}_comp.ply")
-            scale_points, _, scale_reflectance = read_ply(scale_ply)  # Read reflectance from refc
+            scale_points, _, scale_reflectance = read_ply(scale_ply) 
             sorted_scale_points, scale_sort_idx = morton_order_sort(scale_points)
 
-            # Use uint16_to_float to denormalize each scale attribute
+            # Use uint16_to_float to denormalize reflectance for each scale attribute
             denormalized_scale.append(
                 uint16_to_float(scale_reflectance[scale_sort_idx], meta_data['Attribute'][scale_attr]['min'], meta_data['Attribute'][scale_attr]['max'])
             )
             print(f"Processed and denormalized {scale_attr} from {scale_ply}.")
 
-        # Handle rot attribute: denormalization and decompression
+        # Modify rot file denormalization and decompression section
         denormalized_rot = []
         for i, rot_attr in enumerate(['rot_0', 'rot_1', 'rot_2', 'rot_3']):
             rot_ply = os.path.join(output_base_dir, decompression_folders["rot"], f"{dataset_name}_{rot_attr}_comp.ply")
-            rot_points, _, rot_reflectance = read_ply(rot_ply)  # Read reflectance from refc
+            rot_points, _, rot_reflectance = read_ply(rot_ply)  
             sorted_rot_points, rot_sort_idx = morton_order_sort(rot_points)
 
-            # Use uint16_to_float to denormalize each rot attribute
+            # Use uint16_to_float to denormalize reflectance for each rot attribute
             denormalized_rot.append(
                 uint16_to_float(rot_reflectance[rot_sort_idx], meta_data['Attribute'][rot_attr]['min'], meta_data['Attribute'][rot_attr]['max'])
             )
             print(f"Processed and denormalized {rot_attr} from {rot_ply}.")
 
-        # Assign attributes and save to output file
+
+
+        # Assign attributes and save
         output_dir = os.path.join(root_path, "reconstructed_3DGS", f"{dataset_name}_depth_{depth}_thr_{thr}_{mode}_{suffix}_lossless")
-        os.makedirs(output_dir, exist_ok=True)  # Automatically create directory if not exists
+        os.makedirs(output_dir, exist_ok=True)  # Automatically create directory; no error if it already exists
 
         output_file = os.path.join(output_dir, f"{dataset_name}_depth_{depth}_rest_pq_{pq_rest}_dc_pq_{pq_dc}_opacity_pq_{pq_opacity}.ply")
 
