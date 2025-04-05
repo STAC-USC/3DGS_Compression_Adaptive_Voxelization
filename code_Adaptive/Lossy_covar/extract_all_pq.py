@@ -11,18 +11,19 @@ root_path = base_path = os.path.abspath(os.path.join(current_script_dir, '..','.
 base_path = os.path.abspath(os.path.join(root_path, 'RDO'))
 bpp_path = os.path.join(base_path, 'bpp')
 
-# Regex to match JSON filenames
+# Merge JSON files in the PSNR folder
 FILENAME_PATTERN = re.compile(
     r'^(?P<dataset_name>.+)_depth_(?P<depth>\d+)_rest_pq_(?P<rest_pq>\d+)_dc_pq_(?P<dc_pq>\d+)_opacity_pq_(?P<opacity_pq>\d+)\.json$'
 )
 
-# Regex to match REST filenames
+# Merge JSON files in the PSNR_per_view folder
 REST_FILENAME_PATTERN = re.compile(
     r'^(?P<dataset_name>.+)_depth_(?P<depth>\d+)_rest_(\d+_\d+_\d+)_pq_(?P<rest_pq>\d+)\.txt$'
 )
 
-def extract_bitstream_data(dataset_name, depth, rest_pq, dc_pq, opacity_pq, thr, mode, suffix, comp_mode, meta_size):
-    """Extract bitstream data from the bpp folder and process it, adding the meta data file size into the total bitstream size."""
+
+
+def extract_bitstream_data(dataset_name, depth, rest_pq, dc_pq, opacity_pq, thr, mode, suffix,  meta_size):
     key = f"{dataset_name}_depth_{depth}_rest_pq_{rest_pq}_dc_pq_{dc_pq}_opacity_pq_{opacity_pq}"
     result = {
         'positions_B': 0,
@@ -30,9 +31,10 @@ def extract_bitstream_data(dataset_name, depth, rest_pq, dc_pq, opacity_pq, thr,
         'dc_B': 0,
         'opacity_B': 0,
         'rest_B': 0,
+    
     }
 
-    # File paths (assuming lossy mode is used)
+
     covariance_file = os.path.join(
         bpp_path,
         f"{dataset_name}_depth_{depth}_thr_{thr}_{mode}_{suffix}_lossy",
@@ -49,7 +51,7 @@ def extract_bitstream_data(dataset_name, depth, rest_pq, dc_pq, opacity_pq, thr,
         f"{dataset_name}_depth_{depth}_opacity_pq_{opacity_pq}.txt"
     )
 
-    # Process covariance JSON file
+    # 	Process the covariance JSON file
     if os.path.exists(covariance_file):
         with open(covariance_file, 'r', encoding='utf-8') as f:
             covariance_data = json.load(f)
@@ -57,7 +59,7 @@ def extract_bitstream_data(dataset_name, depth, rest_pq, dc_pq, opacity_pq, thr,
     else:
         print(f"Covariance file not found: {covariance_file}")
 
-    # Process dc.txt file
+    #	Process the dc.txt file
     if os.path.exists(dc_file):
         with open(dc_file, 'r', encoding='utf-8') as f:
             for line in f:
@@ -71,7 +73,7 @@ def extract_bitstream_data(dataset_name, depth, rest_pq, dc_pq, opacity_pq, thr,
     else:
         print(f"DC file not found: {dc_file}")
 
-    # Process opacity.txt file
+    # 	Process the opacity.txt file
     if os.path.exists(opacity_file):
         with open(opacity_file, 'r', encoding='utf-8') as f:
             for line in f:
@@ -81,7 +83,7 @@ def extract_bitstream_data(dataset_name, depth, rest_pq, dc_pq, opacity_pq, thr,
     else:
         print(f"Opacity file not found: {opacity_file}")
 
-    # Process multiple REST files and accumulate bitstream sizes (ensure matching dataset_name and depth)
+    # Process multiple REST files and accumulate bitstream size (ensure matching dataset_name and depth)
     rest_path = os.path.join(bpp_path, f"{dataset_name}_depth_{depth}_thr_{thr}_{mode}_{suffix}_lossy")
     rest_files = [
         f for f in os.listdir(rest_path)
@@ -101,7 +103,7 @@ def extract_bitstream_data(dataset_name, depth, rest_pq, dc_pq, opacity_pq, thr,
                     result['rest_B'] += rest_size
                     print(f"Added {rest_size} B from {rest_file} to rest bitstream.")
 
-    # Calculate total bitstream size (including the meta data file size) and convert to MB and Mbits
+    # Calculate total bitstream size (including the meta data file size into total bytes)
     total_bytes = (
         result['positions_B'] + result['covariance_B'] +
         result['dc_B'] + result['opacity_B'] + result['rest_B'] + meta_size
@@ -109,13 +111,16 @@ def extract_bitstream_data(dataset_name, depth, rest_pq, dc_pq, opacity_pq, thr,
     result['meta_data_size_B'] = meta_size 
     result['total_bitstream_size_MB'] = total_bytes / (1024 * 1024)
     result['total_bitstream_size_Mbits'] = total_bytes * 8 / (1024 * 1024)
+    # Record the meta data file size (in MB) separately
+    
 
     print(f"Extracted data for {key}: {result}")
     return result
 
 
-def merge_psnr_files(psnr_directory, output_filename, thr, mode, suffix, comp_mode, meta_size):
-    """Merge the JSON files in the PSNR folder and combine them with the extracted bitstream data."""
+
+def merge_psnr_files(psnr_directory, output_filename, thr, mode, suffix, meta_size):
+    """Merge JSON files in the PSNR folder and combine with the extracted bitstream data"""
     merged_data = {}
 
     for filename in os.listdir(psnr_directory):
@@ -123,7 +128,6 @@ def merge_psnr_files(psnr_directory, output_filename, thr, mode, suffix, comp_mo
             print(f"Processing file: {filename}")
             match = FILENAME_PATTERN.match(filename)
             if match:
-                # Extract information from the filename
                 info = match.groupdict()
                 dataset_name = info['dataset_name']
                 depth = int(info['depth'])
@@ -136,7 +140,7 @@ def merge_psnr_files(psnr_directory, output_filename, thr, mode, suffix, comp_mo
                     psnr_data = json.load(f)
                 bitstream_data = extract_bitstream_data(
                     dataset_name, depth, rest_pq, dc_pq, opacity_pq,
-                    thr, mode, suffix, comp_mode, meta_size
+                    thr, mode, suffix, meta_size
                 )
                 merged_key = f"{dataset_name}_depth_{depth}_rest_pq_{rest_pq}_dc_pq_{dc_pq}_opacity_pq_{opacity_pq}"
                 merged_data[merged_key] = {
@@ -162,18 +166,16 @@ def main():
                         help='Set to "PC" for retrain PC, "3DGS" for retrain 3DGS')
     parser.add_argument('--use_adaptive', type=str, required=True,
                         help='Set to "true" for adaptive voxelization, "false" for uniform voxelization')
-    parser.add_argument('--comp_mode', type=str, required=True,
-                        help='Set to "lossy" for lossy covariance compression, "lossless" for lossless covariance compression')
     args = parser.parse_args()
 
     dataset_name = args.dataset_name
     depth = args.depth_start
     thr = args.voxel_thr
-    # Convert retrain_mode to uppercase, e.g., "PC" or "3DGS"
+    # Normalize retrain_mode to uppercase, such as "PC" or "3DGS"
     mode = args.retrain_mode.upper()
     suffix = "adapt" if args.use_adaptive.lower() == "true" else "uniform"
     
-    # Read the size of the meta data file, assumed to be stored in base_path/Meta_data
+    # Read the meta data file size, assuming it's stored under base_path/Meta_data
     meta_data_file = os.path.abspath(os.path.join(base_path, "Meta_data", f"meta_data_{dataset_name}_depth_{depth}_thr_{thr}_{mode}_{suffix}_lossy.json"))
     if os.path.exists(meta_data_file):
         meta_size = os.path.getsize(meta_data_file)
@@ -182,21 +184,16 @@ def main():
         print(f"[WARNING] Meta data file not found: {meta_data_file}")
         meta_size = 0
 
-    # Merge JSON files in the PSNR folder (assumed to be in base_path/PSNR/{dataset_name}_depth_{depth}_thr_{thr}_{mode}_{suffix}_lossless)
-    psnr_directory = os.path.join(base_path, 'PSNR', f'{dataset_name}_depth_{depth}_thr_{thr}_{mode}_{suffix}_lossless')
-    merge_psnr_files(
-        psnr_directory,
-        f'PSNR_{dataset_name}_depth_{depth}_thr_{thr}_{mode}_{suffix}_lossless.json',
-        thr, mode, suffix, meta_size
-    )
+    # 	Merge JSON files in the PSNR folder
+    psnr_directory = os.path.join(base_path, 'PSNR', f'{dataset_name}_depth_{depth}_thr_{thr}_{mode}_{suffix}_lossy')
+    merge_psnr_files(psnr_directory, f'PSNR_{dataset_name}_depth_{depth}_thr_{thr}_{mode}_{suffix}_lossy.json', thr, mode, suffix, meta_size)
 
-    # Merge JSON files in the PSNR_per_view folder (assumed to be in base_path/PSNR_per_view/{dataset_name}_depth_{depth}_thr_{thr}_{mode}_{suffix}_lossless)
-    psnr_per_view_directory = os.path.join(base_path, 'PSNR_per_view', f'{dataset_name}_depth_{depth}_thr_{thr}_{mode}_{suffix}_lossless')
-    merge_psnr_files(
-        psnr_per_view_directory,
-        f'PSNR_per_view_{dataset_name}_depth_{depth}_thr_{thr}_{mode}_{suffix}_lossless.json',
-        thr, mode, suffix, meta_size
-    )
+    # Merge JSON files in the PSNR_per_view folder
+    psnr_per_view_directory = os.path.join(base_path, 'PSNR_per_view',f'{dataset_name}_depth_{depth}_thr_{thr}_{mode}_{suffix}_lossy')
+    merge_psnr_files(psnr_per_view_directory, f'PSNR_per_view_{dataset_name}_depth_{depth}_thr_{thr}_{mode}_{suffix}_lossy.json', thr, mode, suffix, meta_size)
 
 if __name__ == "__main__":
     main()
+
+
+
