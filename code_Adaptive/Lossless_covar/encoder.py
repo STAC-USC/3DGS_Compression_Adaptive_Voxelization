@@ -14,14 +14,14 @@ import numpy as np
 
 
 def adaptive_normalize(values, dtype):
-    # If there are NaNs or all values are the same (e.g., all zeros), return a zero array
+    # If NaN exists or all values are identical (e.g., all 0), return a zero array
     if np.any(np.isnan(values)) or np.all(values == values[0]):
         normalized_values = np.zeros_like(values, dtype=dtype)
         return normalized_values, 0, 0
 
     min_value = np.min(values)
     max_value = np.max(values)
-    # If the denominator is 0 (i.e., all values are the same), also return a zero array
+    # If denominator is 0 (i.e., all values are identical), also return a zero array
     if max_value - min_value == 0:
         normalized_values = np.zeros_like(values, dtype=dtype)
         return normalized_values, min_value, max_value
@@ -66,11 +66,11 @@ def process_ply_file(
     os.makedirs(os.path.join(output_folder, "scale_compressed"), exist_ok=True)
     os.makedirs(os.path.join(output_folder, "rot_compressed"), exist_ok=True)
 
-    # Load PLY files
+    # Load PLY file
     plydata_rest = PlyData.read(ply_file)
     plydata_voxelized = PlyData.read(point_cloud_voxelized_file)
 
-    # Verify vertex count matches
+    # Verify consistency in vertex count
     if len(plydata_rest['vertex']) != len(plydata_voxelized['vertex']):
         raise ValueError(f"Error: Vertex count mismatch between {ply_file} and {point_cloud_voxelized_file}!")
 
@@ -79,7 +79,7 @@ def process_ply_file(
     y = plydata_voxelized['vertex']['y']
     z = plydata_voxelized['vertex']['z']
 
-    # Initialize metadata
+    # 	Initialize metadata
     meta_data = {"Geometry": {}, "Attribute": {}}
 
     # # Read voxelized geometry information
@@ -154,7 +154,7 @@ def process_ply_file(
         output_rest_file = os.path.join(output_folder, f'{dataset_name}_rest_{i}_{i+1}_{i+2}.ply')
         PlyData([PlyElement.describe(vertices_rest, 'vertex')], text=False).write(output_rest_file)
 
-    # Process scale attributes
+        # Process scale attributes
     for i, scale_attr in enumerate(['scale_0', 'scale_1', 'scale_2']):
         scale_values = plydata_rest['vertex'][scale_attr]
         scale_norm, scale_min, scale_max = adaptive_normalize(scale_values, np.uint16)
@@ -168,7 +168,7 @@ def process_ply_file(
 
         meta_data["Attribute"][scale_attr] = {"min": numpy_to_native(scale_min), "max": numpy_to_native(scale_max)}
 
-    # Process rot attributes
+    # 	Process rot attributes
     for i, rot_attr in enumerate(['rot_0', 'rot_1', 'rot_2', 'rot_3']):
         rot_values = plydata_rest['vertex'][rot_attr]
         rot_norm, rot_min, rot_max = adaptive_normalize(rot_values, np.uint16)
@@ -258,14 +258,14 @@ def main():
     output_folder = process_ply_file(ply_file, point_cloud_voxelized_file, output_base_folder, meta_data_output_folder, dataset_name, depth, thr, mode, suffix)
 
     # Define pq values for different files
-    pq_opacity = [4, 16, 28, 34, 40]
-    pq_dc = [4, 16, 20, 24, 28]
-    pq_rest = [40, 38, 34, 31, 28, 16, 4]
+    # pq_opacity = [4, 16, 28, 34, 40]
+    # pq_dc = [4, 16, 20, 24, 28]
+    # pq_rest = [40, 38, 34, 31, 28, 16, 4]
 
 
-    # pq_opacity = [4]
-    # pq_dc = [4]
-    # pq_rest = [4]
+    pq_opacity = [4]
+    pq_dc = [4]
+    pq_rest = [4]
   
     
 
@@ -324,7 +324,7 @@ def main():
                 futures.append(executor.submit(subprocess.run, tmc3_rest_compress_command))
 
 
-        # ---- The compression command for scale files ----
+        # ---- Modify compression command for scale files ----
         scale_files = [f for f in os.listdir(output_folder) if f.startswith(dataset_name) and "scale_" in f and f.endswith(".ply")]
         for file in scale_files:
             input_file = os.path.join(output_folder, file)
@@ -342,7 +342,7 @@ def main():
             print(f"Compressing {input_file} (scale)")
             futures.append(executor.submit(subprocess.run, tmc3_scale_command))
 
-        # ---- The compression command for rot files ----
+        # ---- Modify compression command for rot files ----
         rot_files = [f for f in os.listdir(output_folder) if f.startswith(dataset_name) and "rot_" in f and f.endswith(".ply")]
         for file in rot_files:
             input_file = os.path.join(output_folder, file)
