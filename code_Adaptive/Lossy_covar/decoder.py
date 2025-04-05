@@ -276,7 +276,6 @@ def main():
     dataset_name = args.dataset_name
     depth = args.depth_start
     thr = args.voxel_thr
-    # retrain_mode is converted to uppercase, such as "PC" or "3DGS"
     mode = args.retrain_mode.upper()
     suffix = "adapt" if args.use_adaptive.lower() == "true" else "uniform"
 
@@ -332,29 +331,29 @@ def main():
         return
 
     allowed_pq_combinations = [
-        # (f_rest_qp, f_dc_qp, opacity_qp)
-        (40, 4, 16), (40, 4, 34), (40, 4, 40),
-        (40, 16, 16), (40, 16, 34), (40, 16, 40),
-        (40, 20, 16), (40, 20, 34), (40, 20, 40),
-        (40, 24, 16), (40, 24, 34), (40, 24, 40),
-        (40, 28, 16), (40, 28, 34), (40, 28, 40),
-	    (38, 4, 4), (38, 16, 4),
-        (34, 4, 4), (34, 16, 4),
-        (31, 4, 4), (31, 16, 4),
-        (28, 4, 4), (28, 16, 4),
-        (38, 4, 16), (38, 16, 16),
-        (34, 4, 16), (34, 16, 16),
-        (31, 4, 16), (31, 16, 16),
-        (28, 4, 16), (28, 16, 16),
-        (38, 4, 28), (38, 16, 28),
-        (34, 4, 28), (34, 16, 28),
-        (31, 4, 28), (31, 16, 28),
-        (28, 4, 28), (28, 16, 28),
-        (16, 4, 4), (16, 16, 4),
-        (4, 4, 4), (4, 16, 4),
-        (16, 4, 16), (4, 4, 16),
+        # # (f_rest_qp, f_dc_qp, opacity_qp)
+        # (40, 4, 16), (40, 4, 34), (40, 4, 40),
+        # (40, 16, 16), (40, 16, 34), (40, 16, 40),
+        # (40, 20, 16), (40, 20, 34), (40, 20, 40),
+        # (40, 24, 16), (40, 24, 34), (40, 24, 40),
+        # (40, 28, 16), (40, 28, 34), (40, 28, 40),
+	    # (38, 4, 4), (38, 16, 4),
+        # (34, 4, 4), (34, 16, 4),
+        # (31, 4, 4), (31, 16, 4),
+        # (28, 4, 4), (28, 16, 4),
+        # (38, 4, 16), (38, 16, 16),
+        # (34, 4, 16), (34, 16, 16),
+        # (31, 4, 16), (31, 16, 16),
+        # (28, 4, 16), (28, 16, 16),
+        # (38, 4, 28), (38, 16, 28),
+        # (34, 4, 28), (34, 16, 28),
+        # (31, 4, 28), (31, 16, 28),
+        # (28, 4, 28), (28, 16, 28),
+        # (16, 4, 4), (16, 16, 4),
+        # (4, 4, 4), (4, 16, 4),
+        # (16, 4, 16), (4, 4, 16),
       
-        # (4, 4, 4)
+        (4, 4, 4)
     ]
 
     template_ply_file = find_largest_iteration(ply_base_dir, dataset_name, depth, thr, mode, suffix)
@@ -381,7 +380,7 @@ def main():
 
         # Assign attributes and save
         output_dir = os.path.join(root_path, "reconstructed_3DGS", f"{dataset_name}_depth_{depth}_thr_{thr}_{mode}_{suffix}_lossy")
-        os.makedirs(output_dir, exist_ok=True)  # 自动创建目录，如果已经存在则不会报错
+        os.makedirs(output_dir, exist_ok=True)  
 
         output_file = os.path.join(output_dir, f"{dataset_name}_depth_{depth}_rest_pq_{pq_rest}_dc_pq_{pq_dc}_opacity_pq_{pq_opacity}.ply")
 
