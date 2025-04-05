@@ -35,7 +35,6 @@ def process_ply_files(base_path):
     dataset_name = args.dataset_name
     depth = args.depth_start
     thr = args.voxel_thr
-    # retrain_mode is converted to uppercase, such as "PC" or "3DGS"
     mode = args.retrain_mode.upper()
     suffix = "adapt" if args.use_adaptive.lower() == "true" else "uniform"
     
