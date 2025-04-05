@@ -14,14 +14,14 @@ import numpy as np
 #     return normalized_values, min_value, max_value
 
 def adaptive_normalize(values, dtype):
-    # If there is NaN or all values ​​are the same (for example, all 0), return an array of all zeros directly
+    # If NaN exists or all values are the same (e.g., all zeros), directly return an all-zero array
     if np.any(np.isnan(values)) or np.all(values == values[0]):
         normalized_values = np.zeros_like(values, dtype=dtype)
         return normalized_values, 0, 0
 
     min_value = np.min(values)
     max_value = np.max(values)
-    # If the denominator is 0 (i.e. all values ​​are the same), an array of all zeros is also returned
+    # If the denominator is 0 (i.e., all values are the same), also return an all-zero array
     if max_value - min_value == 0:
         normalized_values = np.zeros_like(values, dtype=dtype)
         return normalized_values, min_value, max_value
@@ -226,7 +226,7 @@ def main():
     dataset_name = args.dataset_name
     depth = args.depth_start
     thr = args.voxel_thr
-    # retrain_mode is converted to uppercase, such as "PC" or "3DGS"
+    # retrain_mode 统一转为大写，例如 "PC" 或 "3DGS"
     mode = args.retrain_mode.upper()
     suffix = "adapt" if args.use_adaptive.lower() == "true" else "uniform"
 
@@ -238,12 +238,12 @@ def main():
     output_folder = process_ply_file(ply_file, point_cloud_voxelized_file, output_base_folder, meta_data_output_folder, dataset_name, depth, thr, mode, suffix)
 
     # Define pq values for different files
-    pq_opacity = [4, 16, 28, 34, 40]
-    pq_dc = [4, 16, 20, 24, 28]
-    pq_rest = [40, 38, 34, 31, 28, 16, 4]
-    # pq_opacity = [4]
-    # pq_dc = [4]
-    # pq_rest = [4]
+    # pq_opacity = [4, 16, 28, 34, 40]
+    # pq_dc = [4, 16, 20, 24, 28]
+    # pq_rest = [40, 38, 34, 31, 28, 16, 4]
+    pq_opacity = [4]
+    pq_dc = [4]
+    pq_rest = [4]
    
 
     
