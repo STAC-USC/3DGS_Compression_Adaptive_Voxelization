@@ -122,64 +122,74 @@ We present a novel compression framework for 3D Gaussian splatting (3DGS) data t
 └── README.md
 ```
 
-
 ## 📘 Instruction
 
+### Step 1. Configure Conda Environments
+
+Set up two Conda environments:
+
+- `gaussian_splatting`: used for retraining the 3DGS model  
+- `NVS`: used for VQ-based covariance compression
+
+---
+
+### Step 2. Install the GPCC Codec
+
+Clone and compile the GPCC codec (TMC13) from the official repo:
+
+🔗 https://github.com/MPEGGroup/mpeg-pcc-tmc13
+
+> We compiled it using Visual Studio on Windows 10.  
+> The compiled binary (`tmc3.exe`) is located in:
+/build/tmc3/Release/tmc3.exe
+
+---
+
+### Step 3. Voxelization
+
+Run voxelization and configure retraining parameters:
+
 ```bash
-# =========================
-# Step 1: Configure Conda Environments
-# =========================
-# Setup two Conda environments:
-# - gaussian_splatting: for retraining the 3DGS model.
-# - NVS: for VQ-based covariance compression.
-
-# =========================
-# Step 2: Install GPCC Codec
-# =========================
-# Clone and compile GPCC (TMC13) from:
-# https://github.com/MPEGGroup/mpeg-pcc-tmc13
-# Note: We build it with Visual Studio on Windows 10.
-# After building, the executable will be located at:
-#   /build/tmc3/Release/tmc3.exe
-
-# =========================
-# Step 3: Voxelization
-# =========================
 conda activate gaussian_splatting
 cd code_Adaptive
 python voxelization.py --depth_start 15 --voxel_thr 30 --dataset_name train --retrain_mode 3DGS --use_adaptive false --iterations 15000
 conda deactivate
+Step 4a. Lossy Compression
+For a voxelized 3DGS model, launch the compression pipeline using the lossy codec.
 
-# =========================
-# Step 4a: Lossy Compression
-# =========================
-# Quantization parameters are configured inside:
-#   code_Adaptive/Lossy_covar/encoder.py
-#   code_Adaptive/Lossy_covar/decoder.py
-# Default QP combination: (f_rest_qp, f_dc_qp, opacity_qp) = (4, 4, 4)
+Quantization parameters are defined inside:
+
+code_Adaptive/Lossy_covar/encoder.py
+
+code_Adaptive/Lossy_covar/decoder.py
+
+Default QP combination:
+(f_rest_qp, f_dc_qp, opacity_qp) = (4, 4, 4)
 
 conda activate NVS
 cd code_Adaptive/Lossy_covar
 python codec.py --depth_start 15 --voxel_thr 30 --dataset_name train --retrain_mode 3DGS --use_adaptive false
 conda deactivate
 
-# =========================
-# Step 4b: Lossless Compression
-# =========================
-# Quantization parameters are configured inside:
-#   code_Adaptive/Lossless_covar/encoder.py
-#   code_Adaptive/Lossless_covar/decoder.py
-# Default QP combination: (f_rest_qp, f_dc_qp, opacity_qp) = (4, 4, 4)
+Step 4b. Lossless Compression
+Launch the compression pipeline using the lossless codec.
+
+Quantization parameters are defined inside:
+
+code_Adaptive/Lossless_covar/encoder.py
+
+code_Adaptive/Lossless_covar/decoder.py
+
+Default QP combination:
+(f_rest_qp, f_dc_qp, opacity_qp) = (4, 4, 4)
 
 conda activate gaussian_splatting
 cd code_Adaptive/Lossless_covar
 python codec.py --depth_start 15 --voxel_thr 30 --dataset_name train --retrain_mode 3DGS --use_adaptive false
 conda deactivate
 
-# =========================
-# Step 5: Rendering & RD Analysis
-# =========================
-# Evaluate the rate-distortion performance of compressed 3DGS.
+Step 5. Rendering and Rate-Distortion Analysis
+Render the compressed 3DGS and evaluate rate-distortion performance under different compression ratios:
 
 conda activate gaussian_splatting
 cd code_Adaptive
