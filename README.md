@@ -160,11 +160,7 @@ conda deactivate
 ####Step 4a. Lossy Compression
 For a voxelized 3DGS model, launch the compression pipeline using the lossy codec.
 
-Quantization parameters are defined inside:
-
-code_Adaptive/Lossy_covar/encoder.py
-
-code_Adaptive/Lossy_covar/decoder.py
+Quantization parameters are defined inside encoder.py and decoder.py scripts
 
 Default QP combination:
 (f_rest_qp, f_dc_qp, opacity_qp) = (4, 4, 4)
@@ -179,11 +175,7 @@ conda deactivate
 #### Step 4b. Lossless Compression
 Launch the compression pipeline using the lossless codec.
 
-Quantization parameters are defined inside:
-
-code_Adaptive/Lossless_covar/encoder.py
-
-code_Adaptive/Lossless_covar/decoder.py
+Quantization parameters are defined inside encoder.py and decoder.py scripts
 
 Default QP combination:
 (f_rest_qp, f_dc_qp, opacity_qp) = (4, 4, 4)
