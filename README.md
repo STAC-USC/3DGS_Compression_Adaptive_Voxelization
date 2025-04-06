@@ -154,6 +154,7 @@ conda activate gaussian_splatting
 cd code_Adaptive
 python voxelization.py --depth_start 15 --voxel_thr 30 --dataset_name train --retrain_mode 3DGS --use_adaptive false --iterations 15000
 conda deactivate
+```
 
 ### Step 4. Compression
 ####Step 4a. Lossy Compression
@@ -173,8 +174,9 @@ conda activate NVS
 cd code_Adaptive/Lossy_covar
 python codec.py --depth_start 15 --voxel_thr 30 --dataset_name train --retrain_mode 3DGS --use_adaptive false
 conda deactivate
+```
 
-####Step 4b. Lossless Compression
+#### Step 4b. Lossless Compression
 Launch the compression pipeline using the lossless codec.
 
 Quantization parameters are defined inside:
@@ -191,6 +193,7 @@ conda activate gaussian_splatting
 cd code_Adaptive/Lossless_covar
 python codec.py --depth_start 15 --voxel_thr 30 --dataset_name train --retrain_mode 3DGS --use_adaptive false
 conda deactivate
+```
 
 ### Step 5. Rendering and Rate-Distortion Analysis
 Render the compressed 3DGS and evaluate rate-distortion performance under different compression ratios:
@@ -200,3 +203,5 @@ conda activate gaussian_splatting
 cd code_Adaptive
 python plot_RD.py --depth_start 15 --voxel_thr 30 --dataset_name train --retrain_mode 3DGS --use_adaptive false --comp_mode lossless
 conda deactivate
+```
+
