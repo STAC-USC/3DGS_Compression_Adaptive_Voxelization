@@ -139,7 +139,7 @@ Clone and compile the GPCC codec (TMC13) from the official repo:
 
 🔗 https://github.com/MPEGGroup/mpeg-pcc-tmc13
 
-> We compiled it using Visual Studio on Windows 10.  
+> We compiled it using Visual Studio 2019 on Windows 10.  
 > The compiled binary (`tmc3.exe`) is located in:
 /build/tmc3/Release/tmc3.exe
 
