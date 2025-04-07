@@ -1,0 +1,426 @@
+# PSNR benchmark (Rendering PSNR for pre-trained 3DGS model)
+playroom_psnr_benchmark = 29.9225 dB
+Train_psnr_benchmark = 21.7678 dB
+Truck_psnr_benchmark = 24.9427 dB
+
+#Playroom depth 11 Uniform + PC
+Lossy Covar. C. = [
+    {"index": 0, "PSNR": 29.090389251708984, "total_bitstream_size_Mbits": 132.25896453857422},
+    {"index": 3, "PSNR": 29.302330017089844, "total_bitstream_size_Mbits": 144.2340087890625},
+    {"index": 4, "PSNR": 29.199438095092773, "total_bitstream_size_Mbits": 140.55787658691406},
+    {"index": 5, "PSNR": 29.303895950317383, "total_bitstream_size_Mbits": 148.42301177978516},
+    {"index": 6, "PSNR": 28.784725189208984, "total_bitstream_size_Mbits": 100.32575988769531},
+    {"index": 7, "PSNR": 28.697086334228516, "total_bitstream_size_Mbits": 96.64962768554688},
+    {"index": 8, "PSNR": 28.7840518951416, "total_bitstream_size_Mbits": 104.51476287841797},
+    {"index": 9, "PSNR": 29.005107879638672, "total_bitstream_size_Mbits": 112.3008041381836},
+    {"index": 10, "PSNR": 28.91639518737793, "total_bitstream_size_Mbits": 108.62467193603516},
+    {"index": 11, "PSNR": 29.004030227661133, "total_bitstream_size_Mbits": 116.48980712890625},
+    {"index": 12, "PSNR": 28.440357208251953, "total_bitstream_size_Mbits": 78.4913330078125},
+    {"index": 13, "PSNR": 28.3654842376709, "total_bitstream_size_Mbits": 74.81520080566406},
+    {"index": 14, "PSNR": 28.43998908996582, "total_bitstream_size_Mbits": 82.68033599853516},
+    {"index": 15, "PSNR": 28.68879508972168, "total_bitstream_size_Mbits": 90.46637725830078},
+    {"index": 16, "PSNR": 28.611549377441406, "total_bitstream_size_Mbits": 86.79024505615234},
+    {"index": 17, "PSNR": 28.68806266784668, "total_bitstream_size_Mbits": 94.65538024902344},
+    {"index": 18, "PSNR": 28.102636337280273, "total_bitstream_size_Mbits": 61.94091796875},
+    {"index": 19, "PSNR": 28.033235549926758, "total_bitstream_size_Mbits": 58.26478576660156},
+    {"index": 20, "PSNR": 28.10439109802246, "total_bitstream_size_Mbits": 66.12992095947266},
+    {"index": 21, "PSNR": 28.369163513183594, "total_bitstream_size_Mbits": 73.91596221923828},
+    {"index": 22, "PSNR": 28.29680633544922, "total_bitstream_size_Mbits": 70.23983001708984},
+    {"index": 23, "PSNR": 28.369834899902344, "total_bitstream_size_Mbits": 78.10496520996094},
+    {"index": 24, "PSNR": 27.93252944946289, "total_bitstream_size_Mbits": 58.65191650390625},
+    {"index": 25, "PSNR": 27.56810760498047, "total_bitstream_size_Mbits": 53.22663879394531},
+    {"index": 28, "PSNR": 27.043413162231445, "total_bitstream_size_Mbits": 49.03324890136719},
+    {"index": 31, "PSNR": 26.425369262695312, "total_bitstream_size_Mbits": 45.7794189453125},
+    {"index": 34, "PSNR": 24.96812629699707, "total_bitstream_size_Mbits": 42.57649230957031},
+    {"index": 35, "PSNR": 24.038854598999023, "total_bitstream_size_Mbits": 40.85145568847656},
+    {"index": 36, "PSNR": 28.21112823486328, "total_bitstream_size_Mbits": 70.62696075439453},
+    {"index": 38, "PSNR": 29.5692138671875, "total_bitstream_size_Mbits": 292.40879821777344},
+    {"index": 39, "PSNR": 29.576000213623047, "total_bitstream_size_Mbits": 296.5978012084961},
+    {"index": 41, "PSNR": 29.559728622436523, "total_bitstream_size_Mbits": 453.8245620727539},
+    {"index": 42, "PSNR": 29.56641960144043, "total_bitstream_size_Mbits": 458.01356506347656}
+]
+Lossless Covar. C. = [
+    {"index": 1, "PSNR": 29.634014129638672, "total_bitstream_size_Mbits": 472.9546356201172},
+    {"index": 2, "PSNR": 29.646854400634766, "total_bitstream_size_Mbits": 477.14363861083984},
+    {"index": 6, "PSNR": 29.304920196533203, "total_bitstream_size_Mbits": 324.77984619140625},
+    {"index": 7, "PSNR": 29.214704513549805, "total_bitstream_size_Mbits": 321.1037139892578},
+    {"index": 8, "PSNR": 29.313440322875977, "total_bitstream_size_Mbits": 328.9688491821289},
+    {"index": 43, "PSNR": 29.636150360107422, "total_bitstream_size_Mbits": 634.3703994750977},
+    {"index": 44, "PSNR": 29.648822784423828, "total_bitstream_size_Mbits": 638.5594024658203}
+]
+
+
+
+#Playroom depth 12 Uniform + PC
+Lossy Covar. C. = [
+    {"index": 0, "PSNR": 29.427888870239258, "total_bitstream_size_Mbits": 179.99321746826172},
+    {"index": 1, "PSNR": 29.44693374633789, "total_bitstream_size_Mbits": 175.45206451416016},
+    {"index": 3, "PSNR": 29.4747314453125, "total_bitstream_size_Mbits": 194.6075897216797},
+    {"index": 4, "PSNR": 29.526288986206055, "total_bitstream_size_Mbits": 190.06643676757812},
+    {"index": 5, "PSNR": 29.46153450012207, "total_bitstream_size_Mbits": 199.79598999023438},
+    {"index": 6, "PSNR": 29.253828048706055, "total_bitstream_size_Mbits": 137.52312469482422},
+    {"index": 7, "PSNR": 29.269405364990234, "total_bitstream_size_Mbits": 132.98197174072266},
+    {"index": 9, "PSNR": 29.30517578125, "total_bitstream_size_Mbits": 152.1374969482422},
+    {"index": 10, "PSNR": 29.351835250854492, "total_bitstream_size_Mbits": 147.59634399414062},
+    {"index": 12, "PSNR": 29.015474319458008, "total_bitstream_size_Mbits": 107.1542739868164},
+    {"index": 13, "PSNR": 29.024860382080078, "total_bitstream_size_Mbits": 102.61312103271484},
+    {"index": 16, "PSNR": 29.11768913269043, "total_bitstream_size_Mbits": 117.22749328613281},
+    {"index": 19, "PSNR": 28.65665054321289, "total_bitstream_size_Mbits": 78.02629852294922},
+    {"index": 25, "PSNR": 28.223922729492188, "total_bitstream_size_Mbits": 70.46257019042969},
+    {"index": 27, "PSNR": 28.20069122314453, "total_bitstream_size_Mbits": 72.00732421875},
+    {"index": 28, "PSNR": 27.919843673706055, "total_bitstream_size_Mbits": 65.27400970458984},
+    {"index": 31, "PSNR": 27.48680877685547, "total_bitstream_size_Mbits": 61.02818298339844},
+    {"index": 32, "PSNR": 26.875520706176758, "total_bitstream_size_Mbits": 58.94629669189453},
+    {"index": 34, "PSNR": 26.428466796875, "total_bitstream_size_Mbits": 56.770172119140625},
+    {"index": 35, "PSNR": 25.968416213989258, "total_bitstream_size_Mbits": 54.68828582763672},
+
+]
+Lossless Covar. C. = [
+    {"index": 1, "PSNR": 30.025724411010742, "total_bitstream_size_Mbits": 610.7301406860352},
+    {"index": 2, "PSNR": 30.022764205932617, "total_bitstream_size_Mbits": 615.9185409545898},
+    {"index": 6, "PSNR": 29.884662628173828, "total_bitstream_size_Mbits": 422.22900390625},
+    {"index": 7, "PSNR": 29.82573699951172, "total_bitstream_size_Mbits": 417.68785095214844},
+    {"index": 8, "PSNR": 29.8824462890625, "total_bitstream_size_Mbits": 427.4174041748047},
+    {"index": 12, "PSNR": 29.702939987182617, "total_bitstream_size_Mbits": 379.7589111328125},
+    {"index": 13, "PSNR": 29.648645401000977, "total_bitstream_size_Mbits": 375.21775817871094},
+    {"index": 14, "PSNR": 29.700969696044922, "total_bitstream_size_Mbits": 384.9473114013672},
+    {"index": 43, "PSNR": 30.02884864807129, "total_bitstream_size_Mbits": 810.5429229736328},
+    {"index": 44, "PSNR": 30.025373458862305, "total_bitstream_size_Mbits": 815.7313232421875}
+]
+
+#Truck depth 15 Uniform + PC
+Lossy Covar. C. = [
+    {"index": 0, "PSNR": 23.71644401550293, "total_bitstream_size_Mbits": 121.00495910644531},
+    {"index": 2, "PSNR": 23.751562118530273, "total_bitstream_size_Mbits": 125.83279418945312},
+    {"index": 3, "PSNR": 23.925521850585938, "total_bitstream_size_Mbits": 135.02814483642578},
+    {"index": 5, "PSNR": 23.931419372558594, "total_bitstream_size_Mbits": 139.8559799194336},
+    {"index": 6, "PSNR": 23.18366050720215, "total_bitstream_size_Mbits": 99.3907470703125},
+    {"index": 7, "PSNR": 22.88623046875, "total_bitstream_size_Mbits": 95.26565551757812},
+    {"index": 8, "PSNR": 23.236011505126953, "total_bitstream_size_Mbits": 104.21858215332031},
+    {"index": 9, "PSNR": 23.447071075439453, "total_bitstream_size_Mbits": 113.41393280029297},
+    {"index": 12, "PSNR": 22.652725219726562, "total_bitstream_size_Mbits": 86.86973571777344},
+    {"index": 13, "PSNR": 22.354854583740234, "total_bitstream_size_Mbits": 82.74464416503906},
+    {"index": 14, "PSNR": 22.710323333740234, "total_bitstream_size_Mbits": 91.69757080078125},
+    {"index": 18, "PSNR": 22.14907455444336, "total_bitstream_size_Mbits": 79.16607666015625},
+    {"index": 19, "PSNR": 21.864805221557617, "total_bitstream_size_Mbits": 75.04098510742188},
+    {"index": 24, "PSNR": 22.0023193359375, "total_bitstream_size_Mbits": 77.80543518066406},
+    {"index": 27, "PSNR": 21.49446678161621, "total_bitstream_size_Mbits": 73.25296020507812},
+    {"index": 30, "PSNR": 21.016754150390625, "total_bitstream_size_Mbits": 70.12354278564453},
+    {"index": 31, "PSNR": 19.771644592285156, "total_bitstream_size_Mbits": 64.11016082763672},
+    {"index": 34, "PSNR": 18.54033851623535, "total_bitstream_size_Mbits": 61.145545959472656},
+    {"index": 35, "PSNR": 17.287975311279297, "total_bitstream_size_Mbits": 59.363006591796875},
+    {"index": 36, "PSNR": 24.257991790771484, "total_bitstream_size_Mbits": 256.4563217163086},
+    {"index": 37, "PSNR": 24.312076568603516, "total_bitstream_size_Mbits": 265.65167236328125},
+    {"index": 39, "PSNR": 24.269060134887695, "total_bitstream_size_Mbits": 430.52989196777344},
+]
+Lossless Covar. C. = [
+    {"index": 2, "PSNR": 24.21387481689453, "total_bitstream_size_Mbits": 440.9395523071289},
+    {"index": 14, "PSNR": 24.35590362548828, "total_bitstream_size_Mbits": 611.3136672973633},
+]
+
+
+#Truck depth 16 Uniform + PC
+Lossy Covar. C. = [
+    {"index": 0, "PSNR": 23.763261795043945, "total_bitstream_size_Mbits": 134.63701629638672},
+    {"index": 2, "PSNR": 23.77358627319336, "total_bitstream_size_Mbits": 139.85381317138672},
+    {"index": 3, "PSNR": 23.932104110717773, "total_bitstream_size_Mbits": 149.86575317382812},
+    {"index": 5, "PSNR": 23.926828384399414, "total_bitstream_size_Mbits": 155.08255004882812},
+    {"index": 6, "PSNR": 23.225576400756836, "total_bitstream_size_Mbits": 111.71109008789062},
+    {"index": 8, "PSNR": 23.258705139160156, "total_bitstream_size_Mbits": 116.92788696289062},
+    {"index": 9, "PSNR": 23.450109481811523, "total_bitstream_size_Mbits": 126.93982696533203},
+    {"index": 12, "PSNR": 22.702363967895508, "total_bitstream_size_Mbits": 98.51165008544922},
+    {"index": 13, "PSNR": 22.326496124267578, "total_bitstream_size_Mbits": 94.0411605834961},
+    {"index": 18, "PSNR": 22.206958770751953, "total_bitstream_size_Mbits": 90.43025207519531},
+    {"index": 19, "PSNR": 21.846477508544922, "total_bitstream_size_Mbits": 85.95976257324219},
+    {"index": 24, "PSNR": 22.090185165405273, "total_bitstream_size_Mbits": 89.01392364501953},
+    {"index": 27, "PSNR": 21.56761360168457, "total_bitstream_size_Mbits": 84.10545349121094},
+    {"index": 28, "PSNR": 20.489913940429688, "total_bitstream_size_Mbits": 77.59774780273438},
+    {"index": 30, "PSNR": 21.13321876525879, "total_bitstream_size_Mbits": 80.76351165771484},
+    {"index": 31, "PSNR": 20.087331771850586, "total_bitstream_size_Mbits": 74.25580596923828},
+    {"index": 34, "PSNR": 18.827598571777344, "total_bitstream_size_Mbits": 71.12236022949219},
+    {"index": 35, "PSNR": 17.273014068603516, "total_bitstream_size_Mbits": 69.22184753417969},
+    {"index": 36, "PSNR": 24.278087615966797, "total_bitstream_size_Mbits": 282.8633804321289},
+    {"index": 37, "PSNR": 24.31478500366211, "total_bitstream_size_Mbits": 292.74246978759766},
+    {"index": 39, "PSNR": 24.2698974609375, "total_bitstream_size_Mbits": 471.8122787475586},
+]
+Lossless Covar. C. = [
+    {"index": 2, "PSNR": 24.25597381591797, "total_bitstream_size_Mbits": 480.0615768432617},
+    {"index": 13, "PSNR": 24.387130737304688, "total_bitstream_size_Mbits": 659.1735382080078},
+    {"index": 14, "PSNR": 24.414331436157227, "total_bitstream_size_Mbits": 664.2309341430664},
+]
+
+
+########################################################################################################
+#Playroom depth 11 Uniform + PC
+Lossy Covar. C. = [
+    {"index": 0, "PSNR": 29.090389251708984, "total_bitstream_size_Mbits": 132.25896453857422},
+    {"index": 3, "PSNR": 29.302330017089844, "total_bitstream_size_Mbits": 144.2340087890625},
+    {"index": 4, "PSNR": 29.199438095092773, "total_bitstream_size_Mbits": 140.55787658691406},
+    {"index": 5, "PSNR": 29.303895950317383, "total_bitstream_size_Mbits": 148.42301177978516},
+    {"index": 6, "PSNR": 28.784725189208984, "total_bitstream_size_Mbits": 100.32575988769531},
+    {"index": 7, "PSNR": 28.697086334228516, "total_bitstream_size_Mbits": 96.64962768554688},
+    {"index": 8, "PSNR": 28.7840518951416, "total_bitstream_size_Mbits": 104.51476287841797},
+    {"index": 9, "PSNR": 29.005107879638672, "total_bitstream_size_Mbits": 112.3008041381836},
+    {"index": 10, "PSNR": 28.91639518737793, "total_bitstream_size_Mbits": 108.62467193603516},
+    {"index": 11, "PSNR": 29.004030227661133, "total_bitstream_size_Mbits": 116.48980712890625},
+    {"index": 12, "PSNR": 28.440357208251953, "total_bitstream_size_Mbits": 78.4913330078125},
+    {"index": 13, "PSNR": 28.3654842376709, "total_bitstream_size_Mbits": 74.81520080566406},
+    {"index": 14, "PSNR": 28.43998908996582, "total_bitstream_size_Mbits": 82.68033599853516},
+    {"index": 15, "PSNR": 28.68879508972168, "total_bitstream_size_Mbits": 90.46637725830078},
+    {"index": 16, "PSNR": 28.611549377441406, "total_bitstream_size_Mbits": 86.79024505615234},
+    {"index": 17, "PSNR": 28.68806266784668, "total_bitstream_size_Mbits": 94.65538024902344},
+    {"index": 18, "PSNR": 28.102636337280273, "total_bitstream_size_Mbits": 61.94091796875},
+    {"index": 19, "PSNR": 28.033235549926758, "total_bitstream_size_Mbits": 58.26478576660156},
+    {"index": 20, "PSNR": 28.10439109802246, "total_bitstream_size_Mbits": 66.12992095947266},
+    {"index": 21, "PSNR": 28.369163513183594, "total_bitstream_size_Mbits": 73.91596221923828},
+    {"index": 22, "PSNR": 28.29680633544922, "total_bitstream_size_Mbits": 70.23983001708984},
+    {"index": 23, "PSNR": 28.369834899902344, "total_bitstream_size_Mbits": 78.10496520996094},
+    {"index": 24, "PSNR": 27.93252944946289, "total_bitstream_size_Mbits": 58.65191650390625},
+    {"index": 25, "PSNR": 27.56810760498047, "total_bitstream_size_Mbits": 53.22663879394531},
+    {"index": 28, "PSNR": 27.043413162231445, "total_bitstream_size_Mbits": 49.03324890136719},
+    {"index": 31, "PSNR": 26.425369262695312, "total_bitstream_size_Mbits": 45.7794189453125},
+    {"index": 34, "PSNR": 24.96812629699707, "total_bitstream_size_Mbits": 42.57649230957031},
+    {"index": 35, "PSNR": 24.038854598999023, "total_bitstream_size_Mbits": 40.85145568847656},
+    {"index": 36, "PSNR": 28.21112823486328, "total_bitstream_size_Mbits": 70.62696075439453},
+    {"index": 38, "PSNR": 29.5692138671875, "total_bitstream_size_Mbits": 292.40879821777344},
+    {"index": 39, "PSNR": 29.576000213623047, "total_bitstream_size_Mbits": 296.5978012084961},
+    {"index": 41, "PSNR": 29.559728622436523, "total_bitstream_size_Mbits": 453.8245620727539},
+    {"index": 42, "PSNR": 29.56641960144043, "total_bitstream_size_Mbits": 458.01356506347656}
+]
+Lossless Covar. C. = [
+    {"index": 1, "PSNR": 29.634014129638672, "total_bitstream_size_Mbits": 472.9546356201172},
+    {"index": 2, "PSNR": 29.646854400634766, "total_bitstream_size_Mbits": 477.14363861083984},
+    {"index": 6, "PSNR": 29.304920196533203, "total_bitstream_size_Mbits": 324.77984619140625},
+    {"index": 7, "PSNR": 29.214704513549805, "total_bitstream_size_Mbits": 321.1037139892578},
+    {"index": 8, "PSNR": 29.313440322875977, "total_bitstream_size_Mbits": 328.9688491821289},
+    {"index": 43, "PSNR": 29.636150360107422, "total_bitstream_size_Mbits": 634.3703994750977},
+    {"index": 44, "PSNR": 29.648822784423828, "total_bitstream_size_Mbits": 638.5594024658203}
+]
+
+#Playroom depth 11 Uniform + 3DGS
+Lossy Covar. C. = [
+    {"index": 3, "PSNR": 29.366426467895508, "total_bitstream_size_Mbits": 139.68275451660156},
+    {"index": 4, "PSNR": 29.32024574279785, "total_bitstream_size_Mbits": 135.82869720458984},
+    {"index": 5, "PSNR": 29.35215187072754, "total_bitstream_size_Mbits": 144.0972671508789},
+    {"index": 6, "PSNR": 29.418317794799805, "total_bitstream_size_Mbits": 151.59171295166016},
+    {"index": 7, "PSNR": 29.37322425842285, "total_bitstream_size_Mbits": 147.73765563964844},
+    {"index": 8, "PSNR": 29.403339385986328, "total_bitstream_size_Mbits": 156.0062255859375},
+    {"index": 9, "PSNR": 29.199172973632812, "total_bitstream_size_Mbits": 104.5267562866211},
+    {"index": 10, "PSNR": 29.15399742126465, "total_bitstream_size_Mbits": 100.67269897460938},
+    {"index": 11, "PSNR": 29.185165405273438, "total_bitstream_size_Mbits": 108.94126892089844},
+    {"index": 12, "PSNR": 29.248538970947266, "total_bitstream_size_Mbits": 116.43571472167969},
+    {"index": 13, "PSNR": 29.204303741455078, "total_bitstream_size_Mbits": 112.58165740966797},
+    {"index": 15, "PSNR": 29.030529022216797, "total_bitstream_size_Mbits": 81.15216064453125},
+    {"index": 16, "PSNR": 28.981340408325195, "total_bitstream_size_Mbits": 77.29810333251953},
+    {"index": 18, "PSNR": 29.081384658813477, "total_bitstream_size_Mbits": 93.06111907958984},
+    {"index": 21, "PSNR": 28.710140228271484, "total_bitstream_size_Mbits": 64.67431640625},
+    {"index": 22, "PSNR": 28.66269874572754, "total_bitstream_size_Mbits": 60.82025909423828},
+    {"index": 30, "PSNR": 28.479900360107422, "total_bitstream_size_Mbits": 57.227577209472656},
+    {"index": 31, "PSNR": 28.264446258544922, "total_bitstream_size_Mbits": 51.50099182128906},
+    {"index": 34, "PSNR": 28.1198787689209, "total_bitstream_size_Mbits": 48.35936737060547},
+    {"index": 37, "PSNR": 27.782697677612305, "total_bitstream_size_Mbits": 45.329246520996094},
+    {"index": 38, "PSNR": 27.196088790893555, "total_bitstream_size_Mbits": 43.53179168701172},
+]
+Lossless Covar. C. = [
+    {"index": 1, "PSNR": 29.908552169799805, "total_bitstream_size_Mbits": 486.5584182739258},
+    {"index": 2, "PSNR": 29.90006446838379, "total_bitstream_size_Mbits": 490.9729309082031},
+    {"index": 3, "PSNR": 29.726396560668945, "total_bitstream_size_Mbits": 317.7504119873047},
+    {"index": 4, "PSNR": 29.70995330810547, "total_bitstream_size_Mbits": 313.89635467529297},
+    {"index": 6, "PSNR": 29.800228118896484, "total_bitstream_size_Mbits": 329.6593704223633},
+    {"index": 7, "PSNR": 29.786659240722656, "total_bitstream_size_Mbits": 325.80531311035156},
+    {"index": 8, "PSNR": 29.791894912719727, "total_bitstream_size_Mbits": 334.0738830566406},
+    {"index": 9, "PSNR": 29.5977840423584, "total_bitstream_size_Mbits": 282.5944137573242},
+    {"index": 10, "PSNR": 29.585201263427734, "total_bitstream_size_Mbits": 278.7403564453125},
+    {"index": 12, "PSNR": 29.669694900512695, "total_bitstream_size_Mbits": 294.5033721923828},
+    {"index": 13, "PSNR": 29.659896850585938, "total_bitstream_size_Mbits": 290.6493148803711},
+    {"index": 18, "PSNR": 29.504627227783203, "total_bitstream_size_Mbits": 271.12877655029297},
+    {"index": 43, "PSNR": 29.891931533813477, "total_bitstream_size_Mbits": 647.7991790771484},
+    {"index": 44, "PSNR": 29.88326072692871, "total_bitstream_size_Mbits": 652.2136917114258},
+]
+
+#Truck depth 15 Uniform + PC
+Lossy Covar. C. = [
+    {"index": 0, "PSNR": 23.71644401550293, "total_bitstream_size_Mbits": 121.00495910644531},
+    {"index": 2, "PSNR": 23.751562118530273, "total_bitstream_size_Mbits": 125.83279418945312},
+    {"index": 3, "PSNR": 23.925521850585938, "total_bitstream_size_Mbits": 135.02814483642578},
+    {"index": 5, "PSNR": 23.931419372558594, "total_bitstream_size_Mbits": 139.8559799194336},
+    {"index": 6, "PSNR": 23.18366050720215, "total_bitstream_size_Mbits": 99.3907470703125},
+    {"index": 7, "PSNR": 22.88623046875, "total_bitstream_size_Mbits": 95.26565551757812},
+    {"index": 8, "PSNR": 23.236011505126953, "total_bitstream_size_Mbits": 104.21858215332031},
+    {"index": 9, "PSNR": 23.447071075439453, "total_bitstream_size_Mbits": 113.41393280029297},
+    {"index": 12, "PSNR": 22.652725219726562, "total_bitstream_size_Mbits": 86.86973571777344},
+    {"index": 13, "PSNR": 22.354854583740234, "total_bitstream_size_Mbits": 82.74464416503906},
+    {"index": 14, "PSNR": 22.710323333740234, "total_bitstream_size_Mbits": 91.69757080078125},
+    {"index": 18, "PSNR": 22.14907455444336, "total_bitstream_size_Mbits": 79.16607666015625},
+    {"index": 19, "PSNR": 21.864805221557617, "total_bitstream_size_Mbits": 75.04098510742188},
+    {"index": 24, "PSNR": 22.0023193359375, "total_bitstream_size_Mbits": 77.80543518066406},
+    {"index": 27, "PSNR": 21.49446678161621, "total_bitstream_size_Mbits": 73.25296020507812},
+    {"index": 30, "PSNR": 21.016754150390625, "total_bitstream_size_Mbits": 70.12354278564453},
+    {"index": 31, "PSNR": 19.771644592285156, "total_bitstream_size_Mbits": 64.11016082763672},
+    {"index": 34, "PSNR": 18.54033851623535, "total_bitstream_size_Mbits": 61.145545959472656},
+    {"index": 35, "PSNR": 17.287975311279297, "total_bitstream_size_Mbits": 59.363006591796875},
+    {"index": 36, "PSNR": 24.257991790771484, "total_bitstream_size_Mbits": 256.4563217163086},
+    {"index": 37, "PSNR": 24.312076568603516, "total_bitstream_size_Mbits": 265.65167236328125},
+    {"index": 39, "PSNR": 24.269060134887695, "total_bitstream_size_Mbits": 430.52989196777344},
+]
+Lossless Covar. C. = [
+    {"index": 2, "PSNR": 24.21387481689453, "total_bitstream_size_Mbits": 440.9395523071289},
+    {"index": 14, "PSNR": 24.35590362548828, "total_bitstream_size_Mbits": 611.3136672973633},
+]
+
+#truck depth 15 Uniform + 3DGS
+Lossy Covar. C. = [
+    {"index": 1, "PSNR": 24.716493606567383, "total_bitstream_size_Mbits": 266.3394546508789},
+    {"index": 2, "PSNR": 24.71352767944336, "total_bitstream_size_Mbits": 271.3630142211914},
+    {"index": 3, "PSNR": 24.049440383911133, "total_bitstream_size_Mbits": 114.38531494140625},
+    {"index": 4, "PSNR": 23.962570190429688, "total_bitstream_size_Mbits": 109.94060516357422},
+    {"index": 6, "PSNR": 24.170330047607422, "total_bitstream_size_Mbits": 127.99151611328125},
+    {"index": 8, "PSNR": 24.158010482788086, "total_bitstream_size_Mbits": 133.01507568359375},
+    {"index": 9, "PSNR": 23.693008422851562, "total_bitstream_size_Mbits": 95.6152572631836},
+    {"index": 10, "PSNR": 23.619617462158203, "total_bitstream_size_Mbits": 91.17054748535156},
+    {"index": 16, "PSNR": 23.298980712890625, "total_bitstream_size_Mbits": 81.4470443725586},
+    {"index": 22, "PSNR": 22.957775115966797, "total_bitstream_size_Mbits": 75.49028778076172},
+    {"index": 31, "PSNR": 22.447921752929688, "total_bitstream_size_Mbits": 67.6192398071289},
+    {"index": 34, "PSNR": 22.230953216552734, "total_bitstream_size_Mbits": 64.92182159423828},
+    {"index": 35, "PSNR": 21.72489356994629, "total_bitstream_size_Mbits": 62.92045593261719},
+    {"index": 37, "PSNR": 21.831605911254883, "total_bitstream_size_Mbits": 62.474029541015625},
+    {"index": 38, "PSNR": 21.378843307495117, "total_bitstream_size_Mbits": 60.47266387939453},
+    {"index": 43, "PSNR": 24.751373291015625, "total_bitstream_size_Mbits": 460.5533905029297},
+]
+Lossless Covar. C. = [
+    {"index": 2, "PSNR": 24.664064407348633, "total_bitstream_size_Mbits": 473.7445526123047},
+    {"index": 43, "PSNR": 24.669551849365234, "total_bitstream_size_Mbits": 662.934928894043},
+    {"index": 44, "PSNR": 24.68536949157715, "total_bitstream_size_Mbits": 667.9584884643555}
+]
+
+
+# #########################################################################################################
+
+#Playroom depth 11 Uniform + 3DGS
+Lossy Covar. C. = [
+    {"index": 3, "PSNR": 29.317432403564453, "total_bitstream_size_Mbits": 137.46453094482422},
+    {"index": 6, "PSNR": 29.37278938293457, "total_bitstream_size_Mbits": 147.97982788085938},
+    {"index": 8, "PSNR": 29.356937408447266, "total_bitstream_size_Mbits": 151.88047790527344},
+    {"index": 9, "PSNR": 29.161453247070312, "total_bitstream_size_Mbits": 106.24813079833984},
+    {"index": 10, "PSNR": 29.10360336303711, "total_bitstream_size_Mbits": 102.83354949951172},
+    {"index": 12, "PSNR": 29.2110595703125, "total_bitstream_size_Mbits": 116.763427734375},
+    {"index": 15, "PSNR": 28.996885299682617, "total_bitstream_size_Mbits": 85.5580825805664},
+    {"index": 16, "PSNR": 28.945316314697266, "total_bitstream_size_Mbits": 82.14350128173828},
+    {"index": 18, "PSNR": 29.052080154418945, "total_bitstream_size_Mbits": 96.07337951660156},
+    {"index": 21, "PSNR": 28.673690795898438, "total_bitstream_size_Mbits": 71.02205657958984},
+    {"index": 22, "PSNR": 28.627016067504883, "total_bitstream_size_Mbits": 67.60747528076172},
+    {"index": 30, "PSNR": 28.42108154296875, "total_bitstream_size_Mbits": 64.40483093261719},
+    {"index": 31, "PSNR": 28.169578552246094, "total_bitstream_size_Mbits": 59.32654571533203},
+    {"index": 34, "PSNR": 27.980121612548828, "total_bitstream_size_Mbits": 56.51409149169922},
+    {"index": 37, "PSNR": 27.65994644165039, "total_bitstream_size_Mbits": 53.79578399658203},
+    {"index": 38, "PSNR": 27.032978057861328, "total_bitstream_size_Mbits": 52.2054443359375},
+]
+Lossless Covar. C. = [
+    {"index": 1, "PSNR": 29.908552169799805, "total_bitstream_size_Mbits": 486.5584182739258},
+    {"index": 2, "PSNR": 29.90006446838379, "total_bitstream_size_Mbits": 490.9729309082031},
+    {"index": 3, "PSNR": 29.726396560668945, "total_bitstream_size_Mbits": 317.7504119873047},
+    {"index": 4, "PSNR": 29.70995330810547, "total_bitstream_size_Mbits": 313.89635467529297},
+    {"index": 6, "PSNR": 29.800228118896484, "total_bitstream_size_Mbits": 329.6593704223633},
+    {"index": 7, "PSNR": 29.786659240722656, "total_bitstream_size_Mbits": 325.80531311035156},
+    {"index": 8, "PSNR": 29.791894912719727, "total_bitstream_size_Mbits": 334.0738830566406},
+    {"index": 9, "PSNR": 29.5977840423584, "total_bitstream_size_Mbits": 282.5944137573242},
+    {"index": 10, "PSNR": 29.585201263427734, "total_bitstream_size_Mbits": 278.7403564453125},
+    {"index": 12, "PSNR": 29.669694900512695, "total_bitstream_size_Mbits": 294.5033721923828},
+    {"index": 13, "PSNR": 29.659896850585938, "total_bitstream_size_Mbits": 290.6493148803711},
+    {"index": 18, "PSNR": 29.504627227783203, "total_bitstream_size_Mbits": 271.12877655029297},
+    {"index": 43, "PSNR": 29.891931533813477, "total_bitstream_size_Mbits": 647.7991790771484},
+    {"index": 44, "PSNR": 29.88326072692871, "total_bitstream_size_Mbits": 652.2136917114258},
+]
+
+#Playroom depth 8 Adapt + 3DGS
+Lossy Covar. C. = [
+    {"index": 3, "PSNR": 29.366426467895508, "total_bitstream_size_Mbits": 139.68275451660156},
+    {"index": 4, "PSNR": 29.32024574279785, "total_bitstream_size_Mbits": 135.82869720458984},
+    {"index": 5, "PSNR": 29.35215187072754, "total_bitstream_size_Mbits": 144.0972671508789},
+    {"index": 6, "PSNR": 29.418317794799805, "total_bitstream_size_Mbits": 151.59171295166016},
+    {"index": 7, "PSNR": 29.37322425842285, "total_bitstream_size_Mbits": 147.73765563964844},
+    {"index": 8, "PSNR": 29.403339385986328, "total_bitstream_size_Mbits": 156.0062255859375},
+    {"index": 9, "PSNR": 29.199172973632812, "total_bitstream_size_Mbits": 104.5267562866211},
+    {"index": 10, "PSNR": 29.15399742126465, "total_bitstream_size_Mbits": 100.67269897460938},
+    {"index": 11, "PSNR": 29.185165405273438, "total_bitstream_size_Mbits": 108.94126892089844},
+    {"index": 12, "PSNR": 29.248538970947266, "total_bitstream_size_Mbits": 116.43571472167969},
+    {"index": 13, "PSNR": 29.204303741455078, "total_bitstream_size_Mbits": 112.58165740966797},
+    {"index": 15, "PSNR": 29.030529022216797, "total_bitstream_size_Mbits": 81.15216064453125},
+    {"index": 16, "PSNR": 28.981340408325195, "total_bitstream_size_Mbits": 77.29810333251953},
+    {"index": 18, "PSNR": 29.081384658813477, "total_bitstream_size_Mbits": 93.06111907958984},
+    {"index": 21, "PSNR": 28.710140228271484, "total_bitstream_size_Mbits": 64.67431640625},
+    {"index": 22, "PSNR": 28.66269874572754, "total_bitstream_size_Mbits": 60.82025909423828},
+    {"index": 30, "PSNR": 28.479900360107422, "total_bitstream_size_Mbits": 57.227577209472656},
+    {"index": 31, "PSNR": 28.264446258544922, "total_bitstream_size_Mbits": 51.50099182128906},
+    {"index": 34, "PSNR": 28.1198787689209, "total_bitstream_size_Mbits": 48.35936737060547},
+    {"index": 37, "PSNR": 27.782697677612305, "total_bitstream_size_Mbits": 45.329246520996094},
+    {"index": 38, "PSNR": 27.196088790893555, "total_bitstream_size_Mbits": 43.53179168701172},
+]
+Lossless Covar. C. = [
+    {"index": 1, "PSNR": 29.945262908935547, "total_bitstream_size_Mbits": 444.8086395263672},
+    {"index": 2, "PSNR": 29.93688201904297, "total_bitstream_size_Mbits": 448.70928955078125},
+    {"index": 3, "PSNR": 29.769880294799805, "total_bitstream_size_Mbits": 294.60609436035156},
+    {"index": 4, "PSNR": 29.738985061645508, "total_bitstream_size_Mbits": 291.19151306152344},
+    {"index": 6, "PSNR": 29.84065055847168, "total_bitstream_size_Mbits": 305.1213912963867},
+    {"index": 7, "PSNR": 29.81003189086914, "total_bitstream_size_Mbits": 301.7068099975586},
+    {"index": 8, "PSNR": 29.83102035522461, "total_bitstream_size_Mbits": 309.0220413208008},
+    {"index": 9, "PSNR": 29.63727378845215, "total_bitstream_size_Mbits": 263.3896942138672},
+    {"index": 10, "PSNR": 29.604934692382812, "total_bitstream_size_Mbits": 259.97511291503906},
+    {"index": 12, "PSNR": 29.704252243041992, "total_bitstream_size_Mbits": 273.90499114990234},
+    {"index": 13, "PSNR": 29.67286491394043, "total_bitstream_size_Mbits": 270.4904098510742},
+    {"index": 18, "PSNR": 29.543025970458984, "total_bitstream_size_Mbits": 253.2149429321289},
+    {"index": 19, "PSNR": 29.516887664794922, "total_bitstream_size_Mbits": 249.80036163330078},
+    {"index": 43, "PSNR": 29.93178367614746, "total_bitstream_size_Mbits": 588.374641418457},
+    {"index": 44, "PSNR": 29.923465728759766, "total_bitstream_size_Mbits": 592.2752914428711},
+]
+
+#truck depth 15 Uniform + 3DGS
+Lossy Covar. C. = [
+    {"index": 1, "PSNR": 24.716493606567383, "total_bitstream_size_Mbits": 266.3394546508789},
+    {"index": 2, "PSNR": 24.71352767944336, "total_bitstream_size_Mbits": 271.3630142211914},
+    {"index": 3, "PSNR": 24.049440383911133, "total_bitstream_size_Mbits": 114.38531494140625},
+    {"index": 4, "PSNR": 23.962570190429688, "total_bitstream_size_Mbits": 109.94060516357422},
+    {"index": 6, "PSNR": 24.170330047607422, "total_bitstream_size_Mbits": 127.99151611328125},
+    {"index": 8, "PSNR": 24.158010482788086, "total_bitstream_size_Mbits": 133.01507568359375},
+    {"index": 9, "PSNR": 23.693008422851562, "total_bitstream_size_Mbits": 95.6152572631836},
+    {"index": 10, "PSNR": 23.619617462158203, "total_bitstream_size_Mbits": 91.17054748535156},
+    {"index": 16, "PSNR": 23.298980712890625, "total_bitstream_size_Mbits": 81.4470443725586},
+    {"index": 22, "PSNR": 22.957775115966797, "total_bitstream_size_Mbits": 75.49028778076172},
+    {"index": 31, "PSNR": 22.447921752929688, "total_bitstream_size_Mbits": 67.6192398071289},
+    {"index": 34, "PSNR": 22.230953216552734, "total_bitstream_size_Mbits": 64.92182159423828},
+    {"index": 35, "PSNR": 21.72489356994629, "total_bitstream_size_Mbits": 62.92045593261719},
+    {"index": 37, "PSNR": 21.831605911254883, "total_bitstream_size_Mbits": 62.474029541015625},
+    {"index": 38, "PSNR": 21.378843307495117, "total_bitstream_size_Mbits": 60.47266387939453},
+    {"index": 43, "PSNR": 24.751373291015625, "total_bitstream_size_Mbits": 460.5533905029297},
+]
+Lossless Covar. C. = [
+    {"index": 2, "PSNR": 24.664064407348633, "total_bitstream_size_Mbits": 473.7445526123047},
+    {"index": 43, "PSNR": 24.669551849365234, "total_bitstream_size_Mbits": 662.934928894043},
+    {"index": 44, "PSNR": 24.68536949157715, "total_bitstream_size_Mbits": 667.9584884643555}
+]
+
+#truck depth 9 Adapt + 3DGS
+Lossy Covar. C. = [
+    {"index": 1, "PSNR": 24.694377899169922, "total_bitstream_size_Mbits": 202.04397583007812},
+    {"index": 2, "PSNR": 24.706451416015625, "total_bitstream_size_Mbits": 205.45045471191406},
+    {"index": 3, "PSNR": 24.031414031982422, "total_bitstream_size_Mbits": 94.75457000732422},
+    {"index": 4, "PSNR": 23.97350311279297, "total_bitstream_size_Mbits": 91.76074981689453},
+    {"index": 6, "PSNR": 24.158519744873047, "total_bitstream_size_Mbits": 103.96812438964844},
+    {"index": 7, "PSNR": 24.09660530090332, "total_bitstream_size_Mbits": 100.97430419921875},
+    {"index": 8, "PSNR": 24.171627044677734, "total_bitstream_size_Mbits": 107.37460327148438},
+    {"index": 9, "PSNR": 23.644485473632812, "total_bitstream_size_Mbits": 80.61770629882812},
+    {"index": 10, "PSNR": 23.609071731567383, "total_bitstream_size_Mbits": 77.62388610839844},
+    {"index": 15, "PSNR": 23.32161521911621, "total_bitstream_size_Mbits": 73.1492919921875},
+    {"index": 16, "PSNR": 23.28903579711914, "total_bitstream_size_Mbits": 70.15547180175781},
+    {"index": 22, "PSNR": 22.946683883666992, "total_bitstream_size_Mbits": 65.6268539428711},
+    {"index": 31, "PSNR": 22.388980865478516, "total_bitstream_size_Mbits": 60.223297119140625},
+    {"index": 34, "PSNR": 22.16954231262207, "total_bitstream_size_Mbits": 58.37476348876953},
+    {"index": 37, "PSNR": 21.717580795288086, "total_bitstream_size_Mbits": 56.69285583496094},
+    {"index": 38, "PSNR": 21.066627502441406, "total_bitstream_size_Mbits": 55.31743621826172},
+    {"index": 43, "PSNR": 24.731380462646484, "total_bitstream_size_Mbits": 333.76834869384766},
+]
+Lossless Covar. C. = [
+    {"index": 2, "PSNR": 24.67815589904785, "total_bitstream_size_Mbits": 339.62701416015625},
+    {"index": 43, "PSNR": 24.691238403320312, "total_bitstream_size_Mbits": 467.94490814208984},
+    {"index": 44, "PSNR": 24.6987361907959, "total_bitstream_size_Mbits": 471.3513870239258},
+]
