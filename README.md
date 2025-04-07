@@ -20,7 +20,7 @@ We present a novel compression framework for 3D Gaussian splatting (3DGS) data t
 - **Conda Environment 1 (gaussian_splatting)**  
   👉 [graphdeco-inria/gaussian-splatting](https://github.com/graphdeco-inria/gaussian-splatting)
 
-- **Conda Environment 2 (NVS)**  
+- **Conda Environment 2 (c3dgs)**  
   👉 [KeKsBoTer/c3dgs](https://github.com/KeKsBoTer/c3dgs/tree/master)
 
 - **Geometry-based Point Cloud Compression (GPCC) Codec**  
@@ -121,7 +121,7 @@ We present a novel compression framework for 3D Gaussian splatting (3DGS) data t
 Set up two Conda environments:
 
 - `gaussian_splatting`: used for retraining the 3DGS model  
-- `NVS`: used for VQ-based covariance compression
+- `c3dgs`: used for VQ-based covariance compression
 
 ---
 
@@ -175,7 +175,7 @@ Default QP combination:
 (f_rest_qp, f_dc_qp, opacity_qp) = (4, 4, 4)
 
 ```bash
-conda activate NVS
+conda activate c3dgs
 cd code_Adaptive/Lossy_covar
 python codec.py --depth_start 15 --voxel_thr 30 --dataset_name train --retrain_mode 3DGS --use_adaptive false
 conda deactivate
