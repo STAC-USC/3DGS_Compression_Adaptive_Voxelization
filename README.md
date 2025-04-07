@@ -149,7 +149,7 @@ conda deactivate
 ```
 
 ### Step 4. Compression
-####Step 4a. Lossy Compression
+#### Step 4a. Lossy Compression
 For a voxelized 3DGS model, launch the compression pipeline using the lossy codec.
 
 Quantization parameters are defined inside `encoder.py` and `decoder.py` scripts
