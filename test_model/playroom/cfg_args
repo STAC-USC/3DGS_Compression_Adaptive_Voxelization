@@ -1,1 +1,0 @@
-Namespace(eval=True, images='images', model_path='./eval/playroom', resolution=1, sh_degree=3, source_path='f:/bkerbl/Downloads/db/playroom', white_background=False)

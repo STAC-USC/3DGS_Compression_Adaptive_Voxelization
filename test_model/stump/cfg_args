@@ -1,1 +1,0 @@
-Namespace(eval=True, images='images_4', model_path='./eval/stump', resolution=1, sh_degree=3, source_path='f:/bkerbl/Downloads/360_v2/stump', white_background=False)

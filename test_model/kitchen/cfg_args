@@ -1,1 +1,0 @@
-Namespace(eval=True, images='images_2', model_path='./eval/kitchen', resolution=1, sh_degree=3, source_path='f:/bkerbl/Downloads/360_v2/kitchen', white_background=False)
