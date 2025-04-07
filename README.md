@@ -137,7 +137,24 @@ Clone and compile the GPCC codec (TMC13) from the official repo:
 
 ---
 
-### Step 3. Voxelization
+### Step 3. Prepare the Folder Structure
+
+Download the pre-trained 3D Gaussian Splatting models and COLMAP dataset from the official repository:
+
+🔗 https://github.com/graphdeco-inria/gaussian-splatting?tab=readme-ov-file
+
+- Download the **"Pre-trained Models (14 GB)"** from the repository.  
+  Place two copies in your `project_root` directory:
+  - Rename the first copy to `original_model`
+  - Rename the second copy to `test_model`
+
+- Download the **"Evaluation Images (7 GB)"** and place them in the `project_root` directory.  
+  Rename the folder to `colmap_dataset`.
+
+---
+
+
+### Step 4. Voxelization
 
 Run voxelization and configure retraining parameters:
 
@@ -148,8 +165,8 @@ python voxelization.py --depth_start 15 --voxel_thr 30 --dataset_name train --re
 conda deactivate
 ```
 
-### Step 4. Compression
-#### Step 4a. Lossy Compression
+### Step 5. Compression
+#### Step 5a. Lossy Compression
 For a voxelized 3DGS model, launch the compression pipeline using the lossy codec.
 
 Quantization parameters are defined inside `encoder.py` and `decoder.py` scripts
@@ -164,7 +181,7 @@ python codec.py --depth_start 15 --voxel_thr 30 --dataset_name train --retrain_m
 conda deactivate
 ```
 
-#### Step 4b. Lossless Compression
+#### Step 5b. Lossless Compression
 Launch the compression pipeline using the lossless codec.
 
 Quantization parameters are defined inside `encoder.py` and `decoder.py` scripts
@@ -179,7 +196,7 @@ python codec.py --depth_start 15 --voxel_thr 30 --dataset_name train --retrain_m
 conda deactivate
 ```
 
-### Step 5. Rendering and Rate-Distortion Analysis
+### Step 6. Rendering and Rate-Distortion Analysis
 Render the compressed 3DGS and evaluate rate-distortion performance under different compression ratios:
 
 ```bash
