@@ -3,7 +3,11 @@ playroom_psnr_benchmark = 29.9225 dB
 Train_psnr_benchmark = 21.7678 dB
 Truck_psnr_benchmark = 24.9427 dB
 
-#Playroom depth 11 Uniform + PC
+########################################################################################################################
+# Fig. 6. Rate-distortion plots of proposed codec with uniform voxelization and fine-tuning without initialization
+########################################################################################################################
+# Playroom depth 11 Uniform + PC
+# cmd: --depth_start 11 --voxel_thr 0 --dataset_name playroom --retrain_mode PC --use_adaptive false
 Lossy Covar. C. = [
     {"index": 0, "PSNR": 29.090389251708984, "total_bitstream_size_Mbits": 132.25896453857422},
     {"index": 3, "PSNR": 29.302330017089844, "total_bitstream_size_Mbits": 144.2340087890625},
@@ -49,9 +53,8 @@ Lossless Covar. C. = [
     {"index": 44, "PSNR": 29.648822784423828, "total_bitstream_size_Mbits": 638.5594024658203}
 ]
 
-
-
-#Playroom depth 12 Uniform + PC
+# Playroom depth 12 Uniform + PC
+# cmd: --depth_start 12 --voxel_thr 0 --dataset_name playroom --retrain_mode PC --use_adaptive false
 Lossy Covar. C. = [
     {"index": 0, "PSNR": 29.427888870239258, "total_bitstream_size_Mbits": 179.99321746826172},
     {"index": 1, "PSNR": 29.44693374633789, "total_bitstream_size_Mbits": 175.45206451416016},
@@ -88,7 +91,8 @@ Lossless Covar. C. = [
     {"index": 44, "PSNR": 30.025373458862305, "total_bitstream_size_Mbits": 815.7313232421875}
 ]
 
-#Truck depth 15 Uniform + PC
+# Truck depth 15 Uniform + PC
+# cmd: --depth_start 15 --voxel_thr 0 --dataset_name truck --retrain_mode PC --use_adaptive false
 Lossy Covar. C. = [
     {"index": 0, "PSNR": 23.71644401550293, "total_bitstream_size_Mbits": 121.00495910644531},
     {"index": 2, "PSNR": 23.751562118530273, "total_bitstream_size_Mbits": 125.83279418945312},
@@ -119,7 +123,8 @@ Lossless Covar. C. = [
 ]
 
 
-#Truck depth 16 Uniform + PC
+# Truck depth 16 Uniform + PC
+# cmd: --depth_start 16 --voxel_thr 0 --dataset_name truck --retrain_mode PC --use_adaptive false
 Lossy Covar. C. = [
     {"index": 0, "PSNR": 23.763261795043945, "total_bitstream_size_Mbits": 134.63701629638672},
     {"index": 2, "PSNR": 23.77358627319336, "total_bitstream_size_Mbits": 139.85381317138672},
@@ -150,8 +155,11 @@ Lossless Covar. C. = [
 ]
 
 
-########################################################################################################
-#Playroom depth 11 Uniform + PC
+#######################################################################################################################################
+# Fig. 7. Rate-distortion plots of proposed codec using uniform voxelization with and without proposed initialization for fine-tuning.
+#######################################################################################################################################
+# Playroom depth 11 Uniform + PC
+# cmd: --depth_start 11 --voxel_thr 0 --dataset_name playroom --retrain_mode PC --use_adaptive false
 Lossy Covar. C. = [
     {"index": 0, "PSNR": 29.090389251708984, "total_bitstream_size_Mbits": 132.25896453857422},
     {"index": 3, "PSNR": 29.302330017089844, "total_bitstream_size_Mbits": 144.2340087890625},
@@ -197,7 +205,8 @@ Lossless Covar. C. = [
     {"index": 44, "PSNR": 29.648822784423828, "total_bitstream_size_Mbits": 638.5594024658203}
 ]
 
-#Playroom depth 11 Uniform + 3DGS
+# Playroom depth 11 Uniform + 3DGS
+# cmd: --depth_start 11 --voxel_thr 0 --dataset_name playroom --retrain_mode 3DGS --use_adaptive false
 Lossy Covar. C. = [
     {"index": 3, "PSNR": 29.366426467895508, "total_bitstream_size_Mbits": 139.68275451660156},
     {"index": 4, "PSNR": 29.32024574279785, "total_bitstream_size_Mbits": 135.82869720458984},
@@ -238,7 +247,8 @@ Lossless Covar. C. = [
     {"index": 44, "PSNR": 29.88326072692871, "total_bitstream_size_Mbits": 652.2136917114258},
 ]
 
-#Truck depth 15 Uniform + PC
+# Truck depth 15 Uniform + PC
+# cmd: --depth_start 15 --voxel_thr 0 --dataset_name playroom --retrain_mode PC --use_adaptive false
 Lossy Covar. C. = [
     {"index": 0, "PSNR": 23.71644401550293, "total_bitstream_size_Mbits": 121.00495910644531},
     {"index": 2, "PSNR": 23.751562118530273, "total_bitstream_size_Mbits": 125.83279418945312},
@@ -268,7 +278,8 @@ Lossless Covar. C. = [
     {"index": 14, "PSNR": 24.35590362548828, "total_bitstream_size_Mbits": 611.3136672973633},
 ]
 
-#truck depth 15 Uniform + 3DGS
+# truck depth 15 Uniform + 3DGS
+# cmd: --depth_start 15 --voxel_thr 0 --dataset_name truck --retrain_mode 3DGS --use_adaptive false
 Lossy Covar. C. = [
     {"index": 1, "PSNR": 24.716493606567383, "total_bitstream_size_Mbits": 266.3394546508789},
     {"index": 2, "PSNR": 24.71352767944336, "total_bitstream_size_Mbits": 271.3630142211914},
@@ -294,9 +305,11 @@ Lossless Covar. C. = [
 ]
 
 
-# #########################################################################################################
-
-#Playroom depth 11 Uniform + 3DGS
+#########################################################################################################
+# Fig. 8. Rate-distortion plots of proposed codec using uniform voxelization and adaptive voxelization 
+#########################################################################################################
+# Playroom depth 11 Uniform + 3DGS
+# cmd: --depth_start 11 --voxel_thr 0 --dataset_name playroom --retrain_mode 3DGS --use_adaptive false
 Lossy Covar. C. = [
     {"index": 3, "PSNR": 29.317432403564453, "total_bitstream_size_Mbits": 137.46453094482422},
     {"index": 6, "PSNR": 29.37278938293457, "total_bitstream_size_Mbits": 147.97982788085938},
@@ -332,7 +345,8 @@ Lossless Covar. C. = [
     {"index": 44, "PSNR": 29.88326072692871, "total_bitstream_size_Mbits": 652.2136917114258},
 ]
 
-#Playroom depth 8 Adapt + 3DGS
+# Playroom depth 8 Adapt + 3DGS
+# cmd: --depth_start 8 --voxel_thr 30 --dataset_name playroom --retrain_mode 3DGS --use_adaptive true
 Lossy Covar. C. = [
     {"index": 3, "PSNR": 29.366426467895508, "total_bitstream_size_Mbits": 139.68275451660156},
     {"index": 4, "PSNR": 29.32024574279785, "total_bitstream_size_Mbits": 135.82869720458984},
@@ -374,7 +388,8 @@ Lossless Covar. C. = [
     {"index": 44, "PSNR": 29.923465728759766, "total_bitstream_size_Mbits": 592.2752914428711},
 ]
 
-#truck depth 15 Uniform + 3DGS
+# truck depth 15 Uniform + 3DGS
+# cmd: --depth_start 15 --voxel_thr 0 --dataset_name truck --retrain_mode 3DGS --use_adaptive false
 Lossy Covar. C. = [
     {"index": 1, "PSNR": 24.716493606567383, "total_bitstream_size_Mbits": 266.3394546508789},
     {"index": 2, "PSNR": 24.71352767944336, "total_bitstream_size_Mbits": 271.3630142211914},
@@ -399,7 +414,8 @@ Lossless Covar. C. = [
     {"index": 44, "PSNR": 24.68536949157715, "total_bitstream_size_Mbits": 667.9584884643555}
 ]
 
-#truck depth 9 Adapt + 3DGS
+# truck depth 9 Adapt + 3DGS
+# cmd: --depth_start 9 --voxel_thr 30 --dataset_name truck --retrain_mode 3DGS --use_adaptive true
 Lossy Covar. C. = [
     {"index": 1, "PSNR": 24.694377899169922, "total_bitstream_size_Mbits": 202.04397583007812},
     {"index": 2, "PSNR": 24.706451416015625, "total_bitstream_size_Mbits": 205.45045471191406},
@@ -424,3 +440,9 @@ Lossless Covar. C. = [
     {"index": 43, "PSNR": 24.691238403320312, "total_bitstream_size_Mbits": 467.94490814208984},
     {"index": 44, "PSNR": 24.6987361907959, "total_bitstream_size_Mbits": 471.3513870239258},
 ]
+
+
+
+###################################################################################################################
+# Fig. 9. Comparison of proposed codec using adaptive voxelization with state-of-the-art compression 3DGS methods. 
+###################################################################################################################
