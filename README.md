@@ -166,10 +166,7 @@ conda deactivate
 ```
 
 ### Step 5. Compression
-#### Step 5a. Lossy Compression
-For a voxelized 3DGS model, launch the compression pipeline using the lossy codec.
-
-Quantization parameters are defined inside `encoder.py` and `decoder.py` scripts
+Quantization parameters are defined inside `encoder.py` and `decoder.py` scripts for both lossless and lossy compression pipeline
 
 Default QP combination is what we used in our paper at ICIP2025:
 ```bash
@@ -195,6 +192,9 @@ Default QP combination is what we used in our paper at ICIP2025:
         (4, 4, 4), (4, 16, 4),
         (16, 4, 16), (4, 4, 16),
 ```
+#### Step 5a. Lossy Compression
+For a voxelized 3DGS model, launch the compression pipeline using the lossy codec.
+
 ```bash
 conda activate c3dgs
 cd code_Adaptive/Lossy_covar
