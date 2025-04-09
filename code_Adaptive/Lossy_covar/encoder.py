@@ -238,12 +238,12 @@ def main():
     output_folder = process_ply_file(ply_file, point_cloud_voxelized_file, output_base_folder, meta_data_output_folder, dataset_name, depth, thr, mode, suffix)
 
     # Define pq values for different files
-    # pq_opacity = [4, 16, 28, 34, 40]
-    # pq_dc = [4, 16, 20, 24, 28]
-    # pq_rest = [40, 38, 34, 31, 28, 16, 4]
-    pq_opacity = [4]
-    pq_dc = [4]
-    pq_rest = [4]
+    pq_opacity = [4, 16, 28, 34, 40]
+    pq_dc = [4, 16, 20, 24, 28]
+    pq_rest = [40, 38, 34, 31, 28, 16, 4]
+    # pq_opacity = [4]
+    # pq_dc = [4]
+    # pq_rest = [4]
    
 
     
