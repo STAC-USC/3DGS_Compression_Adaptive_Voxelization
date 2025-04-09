@@ -171,9 +171,30 @@ For a voxelized 3DGS model, launch the compression pipeline using the lossy code
 
 Quantization parameters are defined inside `encoder.py` and `decoder.py` scripts
 
-Default QP combination:
-(f_rest_qp, f_dc_qp, opacity_qp) = (4, 4, 4)
-
+Default QP combination is what we used in our paper at ICIP2025:
+```bash
+(f_rest_qp, f_dc_qp, opacity_qp) = 
+        (40, 4, 16), (40, 4, 34), (40, 4, 40),
+        (40, 16, 16), (40, 16, 34), (40, 16, 40),
+        (40, 20, 16), (40, 20, 34), (40, 20, 40),
+        (40, 24, 16), (40, 24, 34), (40, 24, 40),
+        (40, 28, 16), (40, 28, 34), (40, 28, 40),
+	      (38, 4, 4), (38, 16, 4),
+        (34, 4, 4), (34, 16, 4),
+        (31, 4, 4), (31, 16, 4),
+        (28, 4, 4), (28, 16, 4),
+        (38, 4, 16), (38, 16, 16),
+        (34, 4, 16), (34, 16, 16),
+        (31, 4, 16), (31, 16, 16),
+        (28, 4, 16), (28, 16, 16),
+        (38, 4, 28), (38, 16, 28),
+        (34, 4, 28), (34, 16, 28),
+        (31, 4, 28), (31, 16, 28),
+        (28, 4, 28), (28, 16, 28),
+        (16, 4, 4), (16, 16, 4),
+        (4, 4, 4), (4, 16, 4),
+        (16, 4, 16), (4, 4, 16),
+```
 ```bash
 conda activate c3dgs
 cd code_Adaptive/Lossy_covar
