@@ -120,7 +120,7 @@ We present a novel compression framework for 3D Gaussian splatting (3DGS) data t
 
 Set up two Conda environments:
 
-- `gaussian_splatting`: used for retraining the 3DGS model  
+- `gaussian_splatting`: used for retraining the 3DGS model and rendering
 - `c3dgs`: used for VQ-based covariance compression
 
 ---
