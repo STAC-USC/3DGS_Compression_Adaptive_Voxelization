@@ -115,7 +115,7 @@ def main():
         subprocess.check_call(train_command, cwd=retrain_pc_dir)
 
         # Rendering command loop
-        for iteration in range(1000, 5001, 1000):
+        for iteration in range(1000, 50001, 1000):
             render_command = [
                 "python",
                 render_script_path,
@@ -169,7 +169,7 @@ def main():
         subprocess.run(train_command, check=True)
         
         # Rendering
-        for iteration in range(1000, 5001, 1000):
+        for iteration in range(1000, 50001, 1000):
             render_command = [
                 "python",
                 render_script_path,
