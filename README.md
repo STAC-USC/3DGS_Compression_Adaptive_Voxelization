@@ -203,12 +203,10 @@ conda deactivate
 ```
 
 #### Step 5b. Lossless Compression
-Launch the compression pipeline using the lossless codec.
+For a voxelized 3DGS model, launch the compression pipeline using the lossless codec.
 
 Quantization parameters are defined inside `encoder.py` and `decoder.py` scripts
 
-Default QP combination:
-(f_rest_qp, f_dc_qp, opacity_qp) = (4, 4, 4)
 
 ```bash
 conda activate gaussian_splatting
