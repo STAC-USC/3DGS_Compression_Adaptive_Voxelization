@@ -225,3 +225,23 @@ python plot_RD.py --depth_start 15 --voxel_thr 30 --dataset_name train --retrain
 conda deactivate
 ```
 
+## 📄 Preprint
+
+This work has been submitted to **ICIP 2025** and is available as a preprint on arXiv:
+
+🔗 [arxiv.org/abs/2506.00271](https://arxiv.org/abs/2506.00271)
+
+### 📚 Citation
+
+If you find this work useful in your research, please cite it using the following BibTeX:
+
+```bibtex
+@misc{wang2025adaptivevoxelizationtransformcoding,
+  title={Adaptive Voxelization for Transform coding of 3D Gaussian splatting data},
+  author={Chenjunjie Wang and Shashank N. Sridhara and Eduardo Pavez and Antonio Ortega and Cheng Chang},
+  year={2025},
+  eprint={2506.00271},
+  archivePrefix={arXiv},
+  primaryClass={eess.IV},
+  url={https://arxiv.org/abs/2506.00271}
+}
