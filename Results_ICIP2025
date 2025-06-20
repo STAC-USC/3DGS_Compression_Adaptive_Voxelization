@@ -279,7 +279,7 @@ Lossless Covar. C. = [
 ]
 
 # truck depth 15 Uniform + 3DGS
-# cmd: --depth_start 15 --voxel_thr 30 --dataset_name truck --retrain_mode 3DGS --use_adaptive false
+# cmd: --depth_start 15 --voxel_thr 30 --dataset_name truck --retrain_mode 3DGS --use_adaptive false --iterations 20000
 Lossy Covar. C. = [
     {"index": 1, "PSNR": 24.716493606567383, "total_bitstream_size_Mbits": 266.3394546508789},
     {"index": 2, "PSNR": 24.71352767944336, "total_bitstream_size_Mbits": 271.3630142211914},
