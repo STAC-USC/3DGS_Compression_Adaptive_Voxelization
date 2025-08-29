@@ -236,12 +236,14 @@ This work has been submitted to **ICIP 2025** and is available as a preprint on 
 If you find this work useful in your research, please cite it using the following BibTeX:
 
 ```bibtex
-@misc{wang2025adaptivevoxelizationtransformcoding,
-  title={Adaptive Voxelization for Transform coding of 3D Gaussian splatting data},
-  author={Chenjunjie Wang and Shashank N. Sridhara and Eduardo Pavez and Antonio Ortega and Cheng Chang},
+@INPROCEEDINGS{11084522,
+  author={Wang, Chenjunjie and Sridhara, Shashank N. and Pavez, Eduardo and Ortega, Antonio and Chang, Cheng},
+  booktitle={2025 IEEE International Conference on Image Processing (ICIP)},
+  title={Adaptive Voxelization for Transform Coding of 3D Gaussian Splatting Data},
   year={2025},
-  eprint={2506.00271},
-  archivePrefix={arXiv},
-  primaryClass={eess.IV},
-  url={https://arxiv.org/abs/2506.00271}
-}
+  volume={},
+  number={},
+  pages={2414-2419},
+  keywords={Point cloud compression;Image coding;Three-dimensional displays;Codecs;Vector quantization;Bit rate;Transform coding;Streaming media;Rendering (computer graphics);Spatial resolution;3D Gaussian Splatting;Adaptive Voxelization;3D Data Compression;Point Cloud Compression},
+  doi={10.1109/ICIP55913.2025.11084522}}
+
